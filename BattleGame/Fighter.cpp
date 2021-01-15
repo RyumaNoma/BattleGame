@@ -8,19 +8,54 @@ namespace game
 	{
 		this->parts.resize(BodyPartsCount);
 		// “ª
-		this->parts[0] = BodyPart( Palette::Black, 0, 100, 100, Point(0, 0), Point(0, 0) );
+		this->parts[0] = BodyPart( Palette::Black, 0, 100, 100, Point(-50, 0), Point(0, 100) );
 		// “·‘Ì
-		this->parts[1] = BodyPart( Palette::Red, 0, 50, 200, Point(25, 100), Point() );
+		this->parts[1] = BodyPart( Palette::Red, 0, 50, 200, Point(-25, 100), Point(0, 200) );
 		// ¶˜r
-		this->parts[2] = BodyPart( Palette::Blue, 0, 100,20, Point(-75, 150), Point() );
+		this->parts[2] = BodyPart( Palette::Blue, 0, 100,20, Point(-125, 150), Point(-25, 150) );
 		// ‰E˜r
-		this->parts[3] = BodyPart( Palette::Yellow, 0, 100, 20, Point(75, 150), Point() );
+		this->parts[3] = BodyPart( Palette::Yellow, 0, 100, 20, Point(25, 150), Point(25, 150) );
 		// ¶‘«
-		this->parts[4] = BodyPart( Palette::Green, 0, 20, 100, Point(5, 300), Point() );
+		this->parts[4] = BodyPart( Palette::Green, 0, 20, 100, Point(-45, 300), Point(-25, 300) );
 		// ‰E‘«
-		this->parts[5] = BodyPart( Palette::Purple, 0, 20, 100, Point(75, 300), Point() );
+		this->parts[5] = BodyPart( Palette::Purple, 0, 20, 100, Point(25, 300), Point(25, 300) );
 		// Œ•
-		this->parts[6] = BodyPart( Palette::Gray, 0, 10, 150, Point(170, 10), Point() );
+		this->parts[6] = BodyPart( Palette::Gray, 0, 10, 150, Point(120, 10), Point(120, 150) );
+
+		// Œü‚«
+		this->direction = Direction::Right;
+	}
+
+	void Fighter::setDirection(Direction direction)
+	{
+		if (this->direction != direction)
+		{
+			Fighter::revDirection();
+			this->direction = direction;
+		}
+	}
+
+	void Fighter::revDirection()
+	{
+		// ¶˜r‚Æ‰E˜r‚ğŒğŠ·
+		BodyPart temp = this->parts[2];
+		this->parts[2] = this->parts[3];
+		this->parts[3] = temp;
+		// F‚ğ–ß‚·
+		Color c = this->parts[2].color;
+		this->parts[2].color = this->parts[3].color;
+		this->parts[3].color = c;
+
+		// ¶‘«‚Æ‰E‘«‚ğŒğŠ·
+		temp = this->parts[4];
+		this->parts[4] = this->parts[5];
+		this->parts[5] = temp;
+		// F‚ğ–ß‚·
+		c = this->parts[4].color;
+		this->parts[4].color = this->parts[5].color;
+		this->parts[5].color = c;
+
+		this->parts[6].base.x *= -1;
 	}
 
 	void Fighter::draw(int startX, int startY)
