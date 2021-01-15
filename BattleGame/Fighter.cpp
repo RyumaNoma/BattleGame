@@ -4,6 +4,10 @@ namespace game
 {
 	const int Fighter::BodyPartsCount = 7;
 
+	const Color Fighter::colorTemplate[][7] = {
+		{Palette::Red, Palette::Red, Palette::Red, Palette::Red, Palette::Blue, Palette::Blue, Palette::Gray}
+	};
+
 	Fighter::Fighter()
 	{
 		this->parts.resize(BodyPartsCount);
@@ -56,6 +60,19 @@ namespace game
 		this->parts[5].color = c;
 
 		this->parts[6].base.x *= -1;
+	}
+
+	void Fighter::setColor(int partID, Color color)
+	{
+		this->parts[partID].color = color;
+	}
+
+	void Fighter::setColor(int colorTemplateID)
+	{
+		for (int i = 0; i < Fighter::BodyPartsCount; i++)
+		{
+			this->parts[i].color = Fighter::colorTemplate[colorTemplateID][i];
+		}
 	}
 
 	void Fighter::draw(int startX, int startY)
