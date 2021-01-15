@@ -1,0 +1,10 @@
+/BattleGame/App
+/Intermediate
+
+*.vcxproj
+*.filters
+*.user
+*.sln
+*.ipch
+*.suo
+*.VC.*
