@@ -11,45 +11,52 @@ namespace game
 		this->color[4] = Palette::Green;
 		this->color[5] = Palette::Purple;
 		this->color[6] = Palette::Gray;
+
+		this->name = "No Name";
 	}
 
-	char* FighterData::toS()
+	std::string FighterData::toS()
 	{
+		std::string str;
+
 		// F
-		char str[10000];
 		for (int i = 0; i < 7; i++)
 		{
-			char color[100];
+			std::string color;
 			if (this->color[i] == Palette::Black)
 			{
-				strcpy(color, "Black");
+				color = "Black";
 			}
 			else if (this->color[i] == Palette::Gray)
 			{
-				strcpy(color, "Gray");
+				color = "Gray";
 			}
 			else if (this->color[i] == Palette::Red)
 			{
-				strcpy(color, "Red");
+				color = "Red";
 			}
 			else if (this->color[i] == Palette::Yellow)
 			{
-				strcpy(color, "Yellow");
+				color = "Yellow";
 			}
 			else if (this->color[i] == Palette::Purple)
 			{
-				strcpy(color, "Purple");
+				color = "Purple";
 			}
 			else if (this->color[i] == Palette::Green)
 			{
-				strcpy(color, "Green");
+				color = "Green";
 			}
 			else if (this->color[i] == Palette::Blue)
 			{
-				strcpy(color, "Blue");
+				color = "Blue";
 			}
-			sprintf(str, "%s,", color);
+			
+			str += color + ',';
 		}
+
+		//–¼‘O
+		str += this->name + ',';
 
 		return str;
 	}
@@ -106,6 +113,4 @@ namespace game
 
 		return (*this);
 	}
-
-	
 }

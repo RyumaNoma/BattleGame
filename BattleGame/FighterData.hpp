@@ -9,9 +9,10 @@ namespace game
 	{
 	public:
 		Color color[7];
+		std::string name;
 
 		FighterData();
-		char* toS();
+		std::string toS();
 		FighterData toO(const std::string& str);
 	};
 }
