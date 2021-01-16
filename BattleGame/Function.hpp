@@ -7,8 +7,8 @@
 namespace game
 {
 	template<class... Args>
-	bool addLine(std::string fileName, const char& format, Args... args);
-	
+	bool fLine(std::string fileName, const char* mode, const char& format, Args... args);
+
 	template<class... Args>
-	bool writeLine(std::string fileName, const char& format, Args... args);
+	bool fLine(std::string fileName, const char* mode, std::string str);
 }

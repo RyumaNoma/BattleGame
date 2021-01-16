@@ -3,14 +3,15 @@
 namespace game
 {
 	template<class ...Args>
-	bool addLine(std::string fileName, const char& format, Args ...args)
+	bool fLine(std::string fileName, const char* mode, const char& format, Args ...args)
 	{
 		FILE* out;
-		fopen_s(&out, fileName, "a+");
-		
+		fopen_s(&out, fileName, mode);
+
 		if (out)
 		{
 			fprintf_s(out, format, args...);
+			fclose(out);
 			return true;
 		}
 		else
@@ -20,14 +21,14 @@ namespace game
 	}
 
 	template<class ...Args>
-	bool writeLine(std::string fileName, const char& format, Args ...args)
+	bool fLine(std::string fileName, const char* mode, std::string str)
 	{
-		FILE* out;
-		fopen_s(&out, fileName, "w");
+		std::ofstream out(fileName, mode);
 
-		if (out)
+		if (out.is_open())
 		{
-			fprintf_s(out, format, args...);
+			out << str;
+			out.close();
 			return true;
 		}
 		else
