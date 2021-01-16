@@ -1,45 +1,31 @@
-﻿
-# include <Siv3D.hpp> // OpenSiv3D v0.4.3
+﻿#include <Siv3D.hpp> // OpenSiv3D v0.4.3
 #include "Header.hpp"
+
+using App = SceneManager<int>;
 
 void Main()
 {
-	game::Debug("HEYsdf");
-	// 背景を水色にする
-	Scene::SetBackground(ColorF(0.8, 0.9, 1.0));
+	game::debugReset();
+	Scene::SetBackground(Palette::White);
 
-	// 大きさ 60 のフォントを用意
-	const Font font(60);
+	App manager;
 
-	// 猫のテクスチャを用意
-	const Texture cat(Emoji(U"🐈"));
+	manager.add<game::FighterEdit>(0);
 
-	// 猫の座標
-	Vec2 catPos(640, 450);
+	game::Fighter fighter;
+	fighter.setDirection(Direction::Left);
+	fighter.setRotate(6, 30);
 
+	double r = 0;
 	while (System::Update())
 	{
-		// テキストを画面の中心に描く
-		font(U"Hello, Siv3D!🐣").drawAt(Scene::Center(), Palette::Black);
+		fighter.draw(200, 100);
 
-		// 大きさをアニメーションさせて猫を表示する
-		cat.resized(100 + Periodic::Sine0_1(1s) * 20).drawAt(catPos);
-
-		// マウスカーソルに追従する半透明の赤い円を描く
-		Circle(Cursor::Pos(), 40).draw(ColorF(1, 0, 0, 0.5));
-
-		// [A] キーが押されたら
-		if (KeyA.down())
+		r += Scene::DeltaTime();
+		if (r >= 0.1)
 		{
-			// Hello とデバッグ表示する
-			Print << U"Hello!";
-		}
-
-		// ボタンが押されたら
-		if (SimpleGUI::Button(U"Move the cat", Vec2(600, 20)))
-		{
-			// 猫の座標を画面内のランダムな位置に移動する
-			catPos = RandomVec2(Scene::Rect());
+			r = 0;
+			fighter.addRotate(2, 10);
 		}
 	}
 }
