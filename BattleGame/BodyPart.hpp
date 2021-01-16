@@ -8,17 +8,19 @@ namespace game
 	{
 	public:
 		Color color;
-		double rotate;
 		int width;
 		int height;
 		Point base;
+
+		double rotate;
 		Point center;
 
 		double sordRotate;
-		Point sordCenter;
+		double sordCenterX;
+		double sordCenterY;
 
 		BodyPart();
-		BodyPart(Color color, double rotate, int width, int height, Point base, Point center, double sordRotate, Point sordCenter);
+		BodyPart(Color color, int width, int height, Point base, double rotate, Point center, double sordRotate, double sordCenterX, double sordCenterY);
 	};
 }
 
