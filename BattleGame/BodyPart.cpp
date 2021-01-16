@@ -12,7 +12,7 @@ namespace game
 		this->center = Point();
 	}
 
-	BodyPart::BodyPart(Color color, int rotate, int width, int height, Point base, Point center)
+	BodyPart::BodyPart(Color color, double rotate, int width, int height, Point base, Point center, double sordRotate, Point sordCenter)
 	{
 		this->color = color;
 		this->rotate = rotate;
@@ -20,5 +20,7 @@ namespace game
 		this->height = height;
 		this->base = base;
 		this->center = center;
+		this->sordRotate = sordRotate;
+		this->sordCenter = sordCenter;
 	}
 }
