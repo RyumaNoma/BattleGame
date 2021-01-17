@@ -7,6 +7,7 @@
 #include "Function.hpp"
 #include "SceneData.hpp"
 #include "Button.hpp"
+#include "FighterData.hpp"
 
 namespace game
 {
@@ -16,6 +17,8 @@ namespace game
 	{
 	private:
 		std::string out;
+		Fighter fighter;
+		FighterData fighterData;
 	public:
 		FighterEdit(const InitData& init);
 		void update() override;
