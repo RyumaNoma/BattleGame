@@ -13,10 +13,7 @@ namespace game
 			std::vector<FighterData> fd = loadData("./data/Fighters.txt");
 			this->fighterData = fd[getData().fighterNum];
 
-			for (int i = 0; i < 7; i++)
-			{
-				this->fighter.setColor(i, fd[getData().fighterNum].color[i]);
-			}
+			this->fighter.adaptData(this->fighterData);
 		}
 	}
 
