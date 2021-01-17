@@ -22,7 +22,7 @@ namespace game
 	public:
 		Fighter();
 
-		BodyPart getPart(int partID);
+		BodyPart getPart(int partID) const;
 
 		void setDirection(Direction direction);
 		void revDirection();

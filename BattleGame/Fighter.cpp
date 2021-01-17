@@ -42,7 +42,7 @@ namespace game
 		this->direction = Direction::Right;
 	}
 
-	BodyPart Fighter::getPart(int partID)
+	BodyPart Fighter::getPart(int partID) const
 	{
 		return this->parts[partID];
 	}
