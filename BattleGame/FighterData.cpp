@@ -125,6 +125,8 @@ namespace game
 		String str;
 
 		str += Unicode::Widen(this->name);
+
+		return str;
 	}
 
 	std::vector<FighterData> loadData(std::string fileName)
