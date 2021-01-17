@@ -15,98 +15,65 @@ namespace game
 		this->name = "No Name";
 	}
 
-	String FighterData::toS()
+	std::string FighterData::toS()
 	{
-		String str;
+		std::string str = "";
 
 		//名前
-		str += Unicode::Widen(this->name + ',');
+		str += this->name + ',';
+		debug(str);
 
 		// 色
 		for (int i = 0; i < 7; i++)
 		{
-			String color;
-			if (this->color[i] == Palette::Black)
-			{
-				color = U"Black";
-			}
-			else if (this->color[i] == Palette::Gray)
-			{
-				color = U"Gray";
-			}
-			else if (this->color[i] == Palette::Red)
-			{
-				color = U"Red";
-			}
-			else if (this->color[i] == Palette::Yellow)
-			{
-				color = U"Yellow";
-			}
-			else if (this->color[i] == Palette::Purple)
-			{
-				color = U"Purple";
-			}
-			else if (this->color[i] == Palette::Green)
-			{
-				color = U"Green";
-			}
-			else if (this->color[i] == Palette::Blue)
-			{
-				color = U"Blue";
-			}
-			
-			str += color + ',';
+			std::ostringstream oss;
+			oss << this->color[i].r << ',' << this->color[i].g << ',' << this->color[i].b << ',';
+			str +=  oss.str();
 		}
 
+		debug(str);
 		return str;
 	}
 
 	FighterData FighterData::toO(const std::string& str)
 	{
-		// 色
+		// フラグ
+		bool nameFlag = false;
+		bool colorFlag = false;
+
 		int ci = 0;
+		int rgb = 0;
 		std::string now;
 
 		for (int i = 0; i < str.size(); i++)
 		{
 			if (str[i] == ',')
 			{
-				// 色
-				if (ci < 7)
+				// 名前
+				if (!nameFlag)
 				{
-					if (now == "Black")
+					this->name = now;
+					nameFlag = true;
+				}
+				// 色
+				else if (!colorFlag && ci < 7)
+				{
+					switch (rgb)
 					{
-						this->color[ci++] = Palette::Black;
+					case 0:
+						this->color[ci].r = atoi(toC(now));
+						rgb++;
+						break;
+					case 1:
+						this->color[ci].g = atoi(toC(now));
+						rgb++;
+						break;
+					case 2:
+						this->color[ci++].b = atoi(toC(now));
+						rgb = 0;
+						break;
 					}
-					else if (now == "Gray")
-					{
-						this->color[ci++] = Palette::Gray;
-					}
-					else if (now == "Red")
-					{
-						this->color[ci++] = Palette::Red;
-					}
-					else if (now == "Yellow")
-					{
-						this->color[ci++] = Palette::Yellow;
-					}
-					else if (now == "Purple")
-					{
-						this->color[ci++] = Palette::Purple;
-					}
-					else if (now == "Green")
-					{
-						this->color[ci++] = Palette::Green;
-					}
-					else if (now == "Blue")
-					{
-						this->color[ci++] = Palette::Blue;
-					}
-					// 名前
-					else
-					{
-						this->name = now;
-					}
+					if (ci == 7) colorFlag = true;
 				}
 
 				now = "";

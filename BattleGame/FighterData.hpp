@@ -5,6 +5,10 @@
 #include <fstream>
 #include <vector>
 #include <iostream>
+#include <cstdlib>
+#include <sstream>
+#include "Function.hpp"
+#include "Debug.hpp"
 
 namespace game
 {
@@ -15,7 +19,7 @@ namespace game
 		std::string name;
 
 		FighterData();
-		String toS();
+		std::string toS();
 		FighterData toO(const std::string& str);
 		String showS();
 	};
