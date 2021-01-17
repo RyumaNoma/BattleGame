@@ -4,7 +4,7 @@ namespace game
 {
 	FighterEdit::FighterEdit(const InitData& init) : IScene(init)
 	{
-		this->a = 0;
+		this->out = "data/Fighters.txt";
 	}
 
 	void FighterEdit::update()
@@ -13,6 +13,7 @@ namespace game
 
 	void FighterEdit::draw() const
 	{
+		FontAsset(U"Title")(U"Fighter Edit").drawAt(Scene::Center().x, 50, Palette::Black);
 		Fighter fighter;
 		fighter.draw(300, 100);
 	}

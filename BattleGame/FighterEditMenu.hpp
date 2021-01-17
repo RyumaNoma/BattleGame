@@ -14,7 +14,7 @@ namespace game
 	{
 	private:
 		std::string fileName;
-		std::vector<FighterData> fighters;
+		std::vector<String> fighters;
 	public:
 		FighterEditMenu(const InitData& init);
 		void update() override;
