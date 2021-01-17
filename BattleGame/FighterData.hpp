@@ -2,6 +2,8 @@
 
 #include <Siv3D.hpp>
 #include <string>
+#include <fstream>
+#include <vector>
 
 namespace game
 {
@@ -15,5 +17,7 @@ namespace game
 		std::string toS();
 		FighterData toO(const std::string& str);
 	};
+
+	std::vector<FighterData> loadData(std::string fileName);
 }
 

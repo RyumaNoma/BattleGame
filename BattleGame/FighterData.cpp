@@ -113,4 +113,24 @@ namespace game
 
 		return (*this);
 	}
+
+	std::vector<FighterData> loadData(std::string fileName)
+	{
+		std::ifstream in(fileName);
+		std::vector<FighterData> ret;
+		
+		if (in.is_open())
+		{
+			std::string line;
+			while (getline(in, line))
+			{
+				FighterData fd;
+				fd.toO(line);
+				ret.push_back(fd);
+			}
+			in.close();
+		}
+
+		return ret;
+	}
 }
