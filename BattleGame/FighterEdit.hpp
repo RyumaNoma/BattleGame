@@ -1,19 +1,22 @@
 #pragma once
 
 #include <Siv3D.hpp>
+#include <fstream>
+#include <string>
 #include "Fighter.hpp"
+#include "Function.hpp"
+#include "SceneData.hpp"
 
 namespace game
 {
-	using App = SceneManager<int>;
+	using App = SceneManager<int, SceneData>;
 
 	class FighterEdit : public App::Scene
 	{
 	private:
-		int a;
+		std::string out;
 	public:
 		FighterEdit(const InitData& init);
-
 		void update() override;
 		void draw() const override;
 	};

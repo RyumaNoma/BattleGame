@@ -4,6 +4,7 @@
 #include <string>
 #include <fstream>
 #include <vector>
+#include <iostream>
 
 namespace game
 {
@@ -14,7 +15,7 @@ namespace game
 		std::string name;
 
 		FighterData();
-		std::string toS();
+		String toS();
 		FighterData toO(const std::string& str);
 	};
 

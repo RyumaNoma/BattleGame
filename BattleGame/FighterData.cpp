@@ -15,60 +15,59 @@ namespace game
 		this->name = "No Name";
 	}
 
-	std::string FighterData::toS()
+	String FighterData::toS()
 	{
-		std::string str;
+		String str;
+
+		//名前
+		str += Unicode::Widen(this->name + ',');
 
 		// 色
 		for (int i = 0; i < 7; i++)
 		{
-			std::string color;
+			String color;
 			if (this->color[i] == Palette::Black)
 			{
-				color = "Black";
+				color = U"Black";
 			}
 			else if (this->color[i] == Palette::Gray)
 			{
-				color = "Gray";
+				color = U"Gray";
 			}
 			else if (this->color[i] == Palette::Red)
 			{
-				color = "Red";
+				color = U"Red";
 			}
 			else if (this->color[i] == Palette::Yellow)
 			{
-				color = "Yellow";
+				color = U"Yellow";
 			}
 			else if (this->color[i] == Palette::Purple)
 			{
-				color = "Purple";
+				color = U"Purple";
 			}
 			else if (this->color[i] == Palette::Green)
 			{
-				color = "Green";
+				color = U"Green";
 			}
 			else if (this->color[i] == Palette::Blue)
 			{
-				color = "Blue";
+				color = U"Blue";
 			}
 			
 			str += color + ',';
 		}
-
-		//名前
-		str += this->name + ',';
 
 		return str;
 	}
 
 	FighterData FighterData::toO(const std::string& str)
 	{
-		int i = 0;
 		// 色
 		int ci = 0;
 		std::string now;
 
-		while (str[i])
+		for (int i = 0; i < str.size(); i++)
 		{
 			if (str[i] == ',')
 			{
@@ -103,7 +102,14 @@ namespace game
 					{
 						this->color[ci++] = Palette::Blue;
 					}
+					// 名前
+					else
+					{
+						this->name = now;
+					}
 				}
+
+				now = "";
 			}
 			else
 			{
@@ -122,7 +128,7 @@ namespace game
 		if (in.is_open())
 		{
 			std::string line;
-			while (getline(in, line))
+			while (std::getline(in, line))
 			{
 				FighterData fd;
 				fd.toO(line);
