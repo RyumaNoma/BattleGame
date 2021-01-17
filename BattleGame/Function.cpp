@@ -20,7 +20,7 @@ namespace game
 
 		if (out.is_open())
 		{
-			out << str;
+			out << str << std::endl;
 			out.close();
 			return true;
 		}
@@ -36,7 +36,7 @@ namespace game
 
 		if (out.is_open())
 		{
-			out << str;
+			out << str << std::endl;
 			out.close();
 			return true;
 		}
@@ -52,7 +52,7 @@ namespace game
 
 		if (out.is_open())
 		{
-			out << tag << " : " << value;
+			out << tag << " : " << value << std::endl;;
 			out.close();
 			return true;
 		}

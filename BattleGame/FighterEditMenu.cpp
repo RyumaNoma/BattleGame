@@ -29,7 +29,7 @@ namespace game
 			if (300 <= cursorX && cursorX <= 1000 && 185 <= cursorY && cursorY <= 185 + this->fighters.size() * 30)
 			{
 				int fighterNum = (cursorY - 185) / 30;
-				fLine(std::string("./data/Debug.txt"), "fighterNum", fighterNum);
+				debug("fighterNum", fighterNum);
 				getData().newFighter = false;
 				getData().fighterNum = fighterNum;
 				changeScene(2);
