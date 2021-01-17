@@ -22,6 +22,8 @@ namespace game
 	public:
 		Fighter();
 
+		BodyPart getPart(int partID);
+
 		void setDirection(Direction direction);
 		void revDirection();
 

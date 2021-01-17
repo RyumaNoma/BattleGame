@@ -42,6 +42,11 @@ namespace game
 		this->direction = Direction::Right;
 	}
 
+	BodyPart Fighter::getPart(int partID)
+	{
+		return this->parts[partID];
+	}
+
 	void Fighter::setDirection(Direction direction)
 	{
 		if (this->direction != direction)
