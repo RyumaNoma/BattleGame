@@ -10,6 +10,6 @@ namespace game
 {
 	void debugReset(void);
 
-	void debug(std::string str);
+	void debug(const std::string& str);
 	void debug(const char* format, const int& value);
 }

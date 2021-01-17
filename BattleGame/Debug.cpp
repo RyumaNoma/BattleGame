@@ -13,9 +13,9 @@ namespace game
 		}
 	}
 
-	void debug(std::string str)
+	void debug(const std::string& str)
 	{
-		fLine("./data/Debug.txt", toC(str));
+		fLine("./data/Debug.txt", str);
 	}
 
 	void debug(const char* tag, const int& value)
