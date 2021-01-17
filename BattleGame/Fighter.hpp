@@ -30,6 +30,6 @@ namespace game
 		void setRotate(int partID, double rotate);
 		void addRotate(int partID, double rotate);
 
-		void draw(int startX, int startY);
+		void draw(int startX, int startY) const;
 	};
 }

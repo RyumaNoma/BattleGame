@@ -137,7 +137,7 @@ namespace game
 		}
 	}
 
-	void Fighter::draw(int startX, int startY)
+	void Fighter::draw(int startX, int startY) const
 	{
 		for (int i = 0; i < Fighter::BodyPartsCount; i++)
 		{
