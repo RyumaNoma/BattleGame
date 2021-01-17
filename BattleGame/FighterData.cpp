@@ -96,14 +96,6 @@ namespace game
 		return str;
 	}
 
-	void FighterData::toData(const Fighter& fighter)
-	{
-		for (int i = 0; i < 7; i++)
-		{
-			this->color[i] = fighter.getPart(i).color;
-		}
-	}
-
 	std::vector<FighterData> loadData(std::string fileName)
 	{
 		std::ifstream in(fileName);

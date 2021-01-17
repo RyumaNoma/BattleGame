@@ -13,7 +13,7 @@ namespace game
 			std::vector<FighterData> fd = loadData("./data/Fighters.txt");
 			this->fighterData = fd[getData().fighterNum];
 
-			this->fighter.adaptData(this->fighterData);
+			adaptData(this->fighter, this->fighterData);
 		}
 	}
 

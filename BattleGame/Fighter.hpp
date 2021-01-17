@@ -35,6 +35,7 @@ namespace game
 
 		void draw(int startX, int startY) const;
 
-		void adaptData(FighterData fd);
+		friend void toData(const Fighter& fighter, FighterData& fd);
+		friend void adaptData(Fighter& fighter, const FighterData& fd);
 	};
 }

@@ -150,12 +150,4 @@ namespace game
 			Rect(p.base.x + startX, p.base.y + startY, p.width, p.height).rotatedAt(p.center + Point(startX, startY), p.rotate).rotatedAt(Point(static_cast<int>(p.sordCenterX), static_cast<int>(p.sordCenterY)) + Point(startX, startY), p.sordRotate).draw(p.color);
 		}
 	}
-
-	void Fighter::adaptData(FighterData fd)
-	{
-		for (int i = 0; i < 7; i++)
-		{
-			Fighter::setColor(i, fd.color[i]);
-		}
-	}
 }
