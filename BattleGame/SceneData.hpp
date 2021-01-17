@@ -1,6 +1,12 @@
 #pragma once
 
-class SceneData
+namespace game
 {
-	bool newFighter;
-};
+	class SceneData
+	{
+	public:
+		bool newFighter;
+
+		SceneData();
+	};
+}
