@@ -13,9 +13,14 @@ namespace game
 		}
 	}
 
+	void debug(std::string str)
+	{
+		fLine("./data/Debug.txt", toC(str));
+	}
+
 	void debug(const char* tag, const int& value)
 	{
-		fLine("./data/DEbug.txt", tag, value);
+		fLine("./data/Debug.txt", tag, value);
 	}
 }
 #else
