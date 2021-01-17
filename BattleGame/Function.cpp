@@ -14,16 +14,14 @@ namespace game
 		return out;
 	}
 
-	template<class ...Args>
-	bool fLine(const std::string& fileName, const char* mode, const char& format, Args ...args)
+	bool fLine(const std::string& fileName, const std::string& str)
 	{
-		FILE* out;
-		fopen_s(&out, toC(fileName), mode);
+		std::ofstream out(fileName, std::ios_base::out | std::ios_base::app);
 
-		if (out)
+		if (out.is_open())
 		{
-			fprintf_s(out, format, args...);
-			fclose(out);
+			out << str;
+			out.close();
 			return true;
 		}
 		else
@@ -32,14 +30,29 @@ namespace game
 		}
 	}
 
-	template<class ...Args>
-	bool fLine(const std::string& fileName, const char* mode, std::string str)
+	bool fLine(const std::string& fileName, const char* str)
 	{
-		std::ofstream out(fileName, mode);
+		std::ofstream out(fileName, std::ios_base::out | std::ios_base::app);
 
 		if (out.is_open())
 		{
 			out << str;
+			out.close();
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	bool fLine(const std::string& fileName, const char* tag, const int& value)
+	{
+		std::ofstream out(fileName, std::ios_base::out | std::ios_base::app);
+
+		if (out.is_open())
+		{
+			out << tag << " : " << value;
 			out.close();
 			return true;
 		}
