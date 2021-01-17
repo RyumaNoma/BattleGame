@@ -2,11 +2,23 @@
 
 namespace game
 {
+	char* toC(const std::string& str)
+	{
+		char out[1000];
+		for (int i = 0; i < str.size(); i++)
+		{
+			out[i] = str[i];
+		}
+		out[str.size()] = '\0';
+
+		return out;
+	}
+
 	template<class ...Args>
-	bool fLine(std::string fileName, const char* mode, const char& format, Args ...args)
+	bool fLine(const std::string& fileName, const char* mode, const char& format, Args ...args)
 	{
 		FILE* out;
-		fopen_s(&out, fileName, mode);
+		fopen_s(&out, toC(fileName), mode);
 
 		if (out)
 		{
@@ -21,7 +33,7 @@ namespace game
 	}
 
 	template<class ...Args>
-	bool fLine(std::string fileName, const char* mode, std::string str)
+	bool fLine(const std::string& fileName, const char* mode, std::string str)
 	{
 		std::ofstream out(fileName, mode);
 

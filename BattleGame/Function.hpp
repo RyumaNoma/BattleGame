@@ -6,9 +6,11 @@
 
 namespace game
 {
-	template<class... Args>
-	bool fLine(std::string fileName, const char* mode, const char& format, Args... args);
+	char* toC(const std::string& str);
 
 	template<class... Args>
-	bool fLine(std::string fileName, const char* mode, std::string str);
+	bool fLine(const std::string& fileName, const char* mode, const char& format, Args... args);
+
+	template<class... Args>
+	bool fLine(const std::string& fileName, const char* mode, std::string str);
 }
