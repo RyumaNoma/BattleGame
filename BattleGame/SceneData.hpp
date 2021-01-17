@@ -6,6 +6,7 @@ namespace game
 	{
 	public:
 		bool newFighter;
+		int fighterNum;
 
 		SceneData();
 	};
