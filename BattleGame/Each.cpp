@@ -1,4 +1,5 @@
-#include "Each.hpp"
+#include "Fighter.hpp"
+#include "FighterData.hpp"
 
 namespace game
 {
