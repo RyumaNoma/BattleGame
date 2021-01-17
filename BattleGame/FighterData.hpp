@@ -9,6 +9,7 @@
 #include <sstream>
 #include "Function.hpp"
 #include "Debug.hpp"
+#include "Fighter.hpp"
 
 namespace game
 {
@@ -22,6 +23,8 @@ namespace game
 		std::string toS();
 		FighterData toO(const std::string& str);
 		String showS();
+
+		void toData(const Fighter& fighter);
 	};
 
 	std::vector<FighterData> loadData(std::string fileName);
