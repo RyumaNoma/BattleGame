@@ -120,6 +120,13 @@ namespace game
 		return (*this);
 	}
 
+	String FighterData::showS()
+	{
+		String str;
+
+		str += Unicode::Widen(this->name);
+	}
+
 	std::vector<FighterData> loadData(std::string fileName)
 	{
 		std::ifstream in(fileName);
