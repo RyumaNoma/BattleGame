@@ -10,7 +10,7 @@ namespace game
 		this->fighters.resize(fd.size());
 		for (int i = 0; i < fd.size(); i++)
 		{
-			this->fighters[i] = fd[i].toS();
+			this->fighters[i] = fd[i].showS();
 		}
 	}
 
@@ -21,15 +21,31 @@ namespace game
 			getData().newFighter = true;
 			changeScene(2);
 		}
+		else if (MouseL.down())
+		{
+			int cursorX = Cursor::Pos().x;
+			int cursorY = Cursor::Pos().y;
+
+			if (300 <= cursorX && cursorX <= 1000 && 185 <= cursorY && cursorY <= 185 + this->fighters.size() * 30)
+			{
+				int fighterNum = (cursorY - 185) / 30;
+				fLine(std::string("./data/Debug.txt"), "fighterNum", fighterNum);
+				getData().newFighter = false;
+				getData().fighterNum = fighterNum;
+				changeScene(2);
+			}
+		}
 	}
 
 	void FighterEditMenu::draw() const
 	{
 		FontAsset(U"Title")(U"Fighter Edit Menu").drawAt(Scene::Center().x, 50, Palette::Black);
 
+		Line(300, 200 - 15, 1000, 200 - 15).draw(Palette::Skyblue);
 		for (int i = 0; i < fighters.size(); i++)
 		{
-			FontAsset(U"Normal")(this->fighters[i]).drawAt(300, 100 + i * 30, Palette::Black);
+			FontAsset(U"Normal")(this->fighters[i]).drawAt(Scene::Center().x, 200 + i * 30, Palette::Black);
+			Line(300, 200 + (i+1) * 30 - 15, 1000, 200 + (i+1) * 30 - 15).draw(Palette::Skyblue);
 		}
 	}
 }

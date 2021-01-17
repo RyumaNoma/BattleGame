@@ -5,6 +5,7 @@
 #include <string>
 #include "SceneData.hpp"
 #include "FighterData.hpp"
+#include "Debug.hpp"
 
 namespace game
 {
