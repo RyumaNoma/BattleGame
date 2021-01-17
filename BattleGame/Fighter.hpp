@@ -5,6 +5,7 @@
 #include <cmath>
 #include "BodyPart.hpp"
 #include "Direction.hpp"
+#include "FighterData.hpp"
 
 namespace game
 {
@@ -31,5 +32,7 @@ namespace game
 		void addRotate(int partID, double rotate);
 
 		void draw(int startX, int startY) const;
+
+		void adaptData(FighterData fd);
 	};
 }
