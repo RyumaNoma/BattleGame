@@ -150,7 +150,7 @@ namespace game
 	{
 		for (int i = 0; i < 7; i++)
 		{
-			this->parts[i].color = fd.color[i];
+			Fighter::setColor(i, fd.color[i]);
 		}
 	}
 }
