@@ -19,6 +19,7 @@ namespace game
 		if (SimpleGUI::Button(U"New Fighter", Vec2(1000, 50)))
 		{
 			getData().newFighter = true;
+			getData().fighterNum = -1;
 			changeScene(2);
 		}
 		else if (MouseL.down())
