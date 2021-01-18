@@ -66,7 +66,7 @@ namespace game
 
 		if (out.is_open())
 		{
-			out << tag << " : " << value << std::endl;;
+			out << tag << " : " << value << std::endl;
 			out.close();
 			return true;
 		}
