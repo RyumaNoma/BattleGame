@@ -108,4 +108,28 @@ namespace game
 		// プレビュー
 		this->fighter.draw(300, 200);
 	}
+	
+	void FighterEdit::saveFighterData()
+	{
+		// 現在表示しているファイターをFighterDataにする
+		FighterData fd;
+		toData(this->fighter, fd);
+
+		if (getData().newFighter)
+		{
+			
+			this->allFighterData.push_back(fd);
+		}
+		else
+		{
+			this->allFighterData[this->fighterNum] = fd;
+		}
+
+		// data/Fighters.txtに保存
+		resetFile("data/Fighters.txt");
+		for (int i = 0; i < this->allFighterData.size(); i++)
+		{
+			fLine("data/Fighters.txt", this->allFighterData[i].toS());
+		}
+	}
 }
