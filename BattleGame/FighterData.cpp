@@ -21,7 +21,6 @@ namespace game
 
 		//–¼‘O
 		str += this->name + ',';
-		debug(str);
 
 		// F
 		for (int i = 0; i < 7; i++)

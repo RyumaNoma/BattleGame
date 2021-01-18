@@ -4,14 +4,13 @@ namespace game
 {
 	FighterEdit::FighterEdit(const InitData& init) : IScene(init)
 	{
-		this->out = "data/Fighters.txt";
+		this->out = "./data/Fighters.txt";
 		this->fighter = Fighter();
 		this->fighterName = "No name";
+		this->allFighterData = loadData(this->out);
 
 		if (!getData().newFighter)
 		{
-			this->allFighterData = loadData("./data/Fighters.txt");
-
 			this->fighterNum = getData().fighterNum;
 			adaptData(this->fighter, this->allFighterData[this->fighterNum]);
 			this->fighterName = this->allFighterData[this->fighterNum].name;
@@ -40,6 +39,7 @@ namespace game
 			FighterEdit::saveFighterData();
 			changeScene(1);
 		}
+
 		// Cancelボタン
 		if (SimpleGUI::Button(U"Cancel", Vec2(1000, 600), 200))
 		{
@@ -145,26 +145,28 @@ namespace game
 	
 	void FighterEdit::saveFighterData()
 	{
-		if (getData().newFighter)
+		debug("size", this->allFighterData.size());
+		FighterData fd;
+		toData(this->fighter, fd);
+		fd.name = this->fighterName;
+
+		if (!getData().newFighter)
 		{
-			FighterData fd;
-			toData(this->fighter, fd);
-			fd.name = this->fighterName;
-			this->allFighterData.push_back(fd);
-		}
-		else
-		{
-			FighterData fd = this->allFighterData[this->fighterNum];
-			toData(this->fighter, fd);
-			fd.name = this->fighterName;
 			this->allFighterData[this->fighterNum] = fd;
 		}
 
 		// data/Fighters.txtに保存
-		resetFile("data/Fighters.txt");
+		resetFile(this->out);
+
+		// ファイターを追加
+		if (getData().newFighter)
+		{
+			fLine(this->out, fd.toS());
+		}
+
 		for (int i = 0; i < this->allFighterData.size(); i++)
 		{
-			fLine("data/Fighters.txt", this->allFighterData[i].toS());
+			fLine(this->out, this->allFighterData[i].toS());
 		}
 	}
 }
