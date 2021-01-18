@@ -28,7 +28,10 @@ namespace game
 		int selectPart;
 		// その部位の色
 		Color selectColor;
+		// なまえ
+		std::string fighterName;
 		// テキストボックス
+		TextEditState name;
 		TextEditState red;
 		TextEditState green;
 		TextEditState blue;
