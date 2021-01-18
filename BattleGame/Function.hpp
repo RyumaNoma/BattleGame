@@ -8,7 +8,7 @@
 namespace game
 {
 	char* toC(const std::string& str);
-
+	bool resetFile(const std::string& fileName);
 	bool fLine(const std::string& fileName, const std::string& str);
 	bool fLine(const std::string& fileName, const char* str);
 	bool fLine(const std::string& fileName, const char* tag, const int& value);

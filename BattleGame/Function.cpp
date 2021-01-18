@@ -14,6 +14,20 @@ namespace game
 		return out;
 	}
 
+	bool resetFile(const std::string& fileName)
+	{
+		std::ofstream out(fileName);
+		if (out.is_open())
+		{
+			out.close();
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
 	bool fLine(const std::string& fileName, const std::string& str)
 	{
 		std::ofstream out(fileName, std::ios_base::out | std::ios_base::app);
