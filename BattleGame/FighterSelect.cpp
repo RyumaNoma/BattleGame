@@ -9,8 +9,8 @@ namespace game
 		{
 			this->fighter[i] = Fighter();
 			this->fighterData[i] = FighterData();
-			this->isSelect[i] = false;
 		}
+		this->selectCount = 0;
 	}
 
 	void FighterSelect::update()
@@ -22,7 +22,8 @@ namespace game
 		}
 
 		// スタートボタン
-		if (SimpleGUI::Button(U"Start Game", Vec2(Scene::Center().x, 900), 200, this->isSelect[0] && this->isSelect[1]))
+		bool isSelect = (this->selectCount > 0 && this->selectCount % 2 == 0);
+		if (SimpleGUI::Button(U"Start Game", Vec2(Scene::Center().x, 900), 200, isSelect))
 		{
 			for (int i = 0; i < 2; i++)
 			{
@@ -42,17 +43,17 @@ namespace game
 
 				// 1番目のキャラが選ばれていない OR
 				// どちらも選ばれている
-				if (!this->isSelect[0] || (this->isSelect[0] && this->isSelect[1]))
+				if (this->selectCount % 2 == 0)
 				{
 					this->fighterData[0] = this->allFighterData[fighterNum];
 					adaptData(this->fighter[0], this->fighterData[0]);
-					this->isSelect[0] = true;
+					this->selectCount++;
 				}
 				else
 				{
 					this->fighterData[1] = this->allFighterData[fighterNum];
-					adaptData(this->fighter[0], this->fighterData[1]);
-					this->isSelect[1] = true;
+					adaptData(this->fighter[1], this->fighterData[1]);
+					this->selectCount++;
 				}
 			}
 		}
@@ -67,18 +68,18 @@ namespace game
 		Line(300, 200 - 15, 1000, 200 - 15).draw(Palette::Skyblue);
 		for (int i = 0; i < this->allFighterData.size(); i++)
 		{
-			FontAsset(U"Normal")(this->allFighterData[i].name).drawAt(Scene::Center().x, 200 + i * 30, Palette::Black);
+			FontAsset(U"Normal")(this->allFighterData[i].showS()).drawAt(Scene::Center().x, 200 + i * 30, Palette::Black);
 			Line(300, 200 + (i + 1) * 30 - 15, 1000, 200 + (i + 1) * 30 - 15).draw(Palette::Skyblue);
 		}
 
 		// fighterプレビュー
-		if (this->isSelect[0])
+		if (this->selectCount > 0)
 		{
-			this->fighter[0].draw(50, 500);
+			this->fighter[0].draw(50, 300);
 		}
-		if (this->isSelect[1])
+		if (this->selectCount > 1)
 		{
-			this->fighter[1].draw(900, 500);
+			this->fighter[1].draw(800, 300);
 		}
 	}
 }

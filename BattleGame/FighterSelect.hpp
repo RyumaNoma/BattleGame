@@ -17,7 +17,7 @@ namespace game
 		std::vector<FighterData> allFighterData;
 		Fighter fighter[2];
 		FighterData fighterData[2];
-		bool isSelect[2];
+		int selectCount;
 
 	public:
 		FighterSelect(const InitData& init);
