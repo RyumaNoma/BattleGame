@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Fighter.hpp"
+
 namespace game
 {
 	class SceneData
@@ -7,6 +9,7 @@ namespace game
 	public:
 		bool newFighter;
 		int fighterNum;
+		Fighter fighter[2];
 
 		SceneData();
 	};
