@@ -19,8 +19,11 @@ namespace game
 		double sordCenterX;
 		double sordCenterY;
 
+		bool isAttack;
+		bool isVisible;
+
 		BodyPart();
-		BodyPart(Color color, int width, int height, Point base, double rotate, Point center, double sordRotate, double sordCenterX, double sordCenterY);
+		BodyPart(Color color, int width, int height, Point base, double rotate, Point center, double sordRotate, double sordCenterX, double sordCenterY, bool isAttack, bool isVisible);
 	};
 }
 

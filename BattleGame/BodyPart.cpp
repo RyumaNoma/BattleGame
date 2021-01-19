@@ -10,9 +10,11 @@ namespace game
 		this->height = 1;
 		this->base = Point();
 		this->center = Point();
+		this->isAttack = false;
+		this->isVisible = true;
 	}
 
-	BodyPart::BodyPart(Color color, int width, int height, Point base, double rotate, Point center, double sordRotate, double sordCenterX, double sordCenterY)
+	BodyPart::BodyPart(Color color, int width, int height, Point base, double rotate, Point center, double sordRotate, double sordCenterX, double sordCenterY, bool isAttack, bool isVisible)
 	{
 		this->color = color;
 		this->rotate = rotate;
@@ -23,5 +25,7 @@ namespace game
 		this->sordRotate = sordRotate;
 		this->sordCenterX = sordCenterX;
 		this->sordCenterY = sordCenterY;
+		this->isAttack = isAttack;
+		this->isVisible = isVisible;
 	}
 }
