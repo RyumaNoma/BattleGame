@@ -18,6 +18,9 @@ namespace game
 		std::vector<BodyPart> parts;
 		Direction direction;
 
+		int flame;
+		int motionNum;
+
 		int sordHand();
 	public:
 		Fighter();
@@ -32,6 +35,15 @@ namespace game
 
 		void setRotate(int partID, double rotate);
 		void addRotate(int partID, double rotate);
+
+		int getFlame();
+		void setFlame(int flame);
+		void resetFlame();
+		void incFlame();
+
+		int getMotionNum();
+		void setMotionNum(int motionNum);
+		void resetMotionNum();
 
 		void draw(int startX, int startY) const;
 

@@ -24,22 +24,26 @@ namespace game
 	{
 		this->parts.resize(BodyPartsCount);
 		// 頭
-		this->parts[0] = BodyPart( Palette::Black, 100, 100, Point(-50, 0), 0, Point(0, 100), 0, 0, 0 );
+		this->parts[0] = BodyPart( Palette::Black, 100, 100, Point(-50, 0), 0, Point(0, 100), 0, 0, 0, false, true);
 		// 胴体
-		this->parts[1] = BodyPart( Palette::Red, 50, 200, Point(-25, 100), 0, Point(0, 200), 0, 0, 0);
+		this->parts[1] = BodyPart( Palette::Red, 50, 200, Point(-25, 100), 0, Point(0, 200), 0, 0, 0, false, true);
 		// 左腕
-		this->parts[2] = BodyPart( Palette::Blue, 100,20, Point(-125, 150), 0, Point(-25, 150), 0, 0, 0);
+		this->parts[2] = BodyPart( Palette::Blue, 100,20, Point(-125, 150), 0, Point(-25, 150), 0, 0, 0, false, true);
 		// 右腕
-		this->parts[3] = BodyPart( Palette::Yellow, 100, 20, Point(25, 150), 0, Point(25, 150), 0, 0, 0);
+		this->parts[3] = BodyPart( Palette::Yellow, 100, 20, Point(25, 150), 0, Point(25, 150), 0, 0, 0, false, true);
 		// 左足
-		this->parts[4] = BodyPart( Palette::Green, 20, 100, Point(-45, 300), 0, Point(-25, 300), 0, 0, 0);
+		this->parts[4] = BodyPart( Palette::Green, 20, 100, Point(-45, 300), 0, Point(-25, 300), 0, 0, 0, false, true);
 		// 右足
-		this->parts[5] = BodyPart( Palette::Purple, 20, 100, Point(25, 300), 0, Point(25, 300), 0, 0, 0);
+		this->parts[5] = BodyPart( Palette::Purple, 20, 100, Point(25, 300), 0, Point(25, 300), 0, 0, 0, false, true);
 		// 剣
-		this->parts[6] = BodyPart( Palette::Gray, 10, 150, Point(120, 10), 0, Point(25, 150), 0, 120, 160);
+		this->parts[6] = BodyPart( Palette::Gray, 10, 150, Point(120, 10), 0, Point(25, 150), 0, 120, 160, false, true);
 
 		// 向き
 		this->direction = Direction::Right;
+		// 現在のフレーム数
+		this->flame = 0;
+		// モーションの番号
+		this->motionNum = 0;
 	}
 
 	BodyPart Fighter::getPart(int partID) const
@@ -142,12 +146,48 @@ namespace game
 		}
 	}
 
+	int Fighter::getFlame()
+	{
+		return this->flame;
+	}
+
+	void Fighter::setFlame(int flame)
+	{
+		this->flame = flame;
+	}
+
+	void Fighter::resetFlame()
+	{
+		Fighter::setFlame(0);
+	}
+
+	void Fighter::incFlame()
+	{
+		++this->flame;
+	}
+
+	int Fighter::getMotionNum()
+	{
+		return this->motionNum;
+	}
+
+	void Fighter::setMotionNum(int motionNum)
+	{
+		this->motionNum = motionNum;
+	}
+
+	void Fighter::resetMotionNum()
+	{
+		Fighter::setMotionNum(0);
+	}
+
 	void Fighter::draw(int startX, int startY) const
 	{
 		for (int i = 0; i < Fighter::BodyPartsCount; i++)
 		{
 			const auto& p = this->parts[i];
-			Rect(p.base.x + startX, p.base.y + startY, p.width, p.height).rotatedAt(p.center + Point(startX, startY), p.rotate).rotatedAt(Point(static_cast<int>(p.sordCenterX), static_cast<int>(p.sordCenterY)) + Point(startX, startY), p.sordRotate).draw(p.color);
+			if (p.isVisible)
+				Rect(p.base.x + startX, p.base.y + startY, p.width, p.height).rotatedAt(p.center + Point(startX, startY), p.rotate).rotatedAt(Point(static_cast<int>(p.sordCenterX), static_cast<int>(p.sordCenterY)) + Point(startX, startY), p.sordRotate).draw(p.color);
 		}
 	}
 }
