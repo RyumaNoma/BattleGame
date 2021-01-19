@@ -18,6 +18,16 @@ namespace game
 		}
 	}
 
+	void drawButton(String str, Color color, int startX, int startY, int endX, int endY)
+	{
+		Line(startX, startY, endX, startY).draw(color);
+		Line(endX, startY, endX, endY).draw(color);
+		Line(endX, endY, startX, endY).draw(color);
+		Line(startX, endY, startX, startY).draw(color);
+
+		FontAsset(U"Normal")(str).drawAt((startX + endX) / 2, (startY + endY) / 2, color);
+	}
+
 	void drawBackButton()
 	{
 		FontAsset(U"Normal")(U"Back").drawAt(50, 25, Palette::Black);
