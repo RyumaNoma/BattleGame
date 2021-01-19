@@ -23,7 +23,7 @@ namespace game
 
 		// スタートボタン
 		bool isSelect = (this->selectCount > 0 && this->selectCount % 2 == 0);
-		if (SimpleGUI::Button(U"Start Game", Vec2(Scene::Center().x, 900), 200, isSelect))
+		if (SimpleGUI::Button(U"Start Game", Vec2(550, 600), 200, isSelect))
 		{
 			for (int i = 0; i < 2; i++)
 			{
@@ -75,11 +75,11 @@ namespace game
 		// fighterプレビュー
 		if (this->selectCount > 0)
 		{
-			this->fighter[0].draw(50, 300);
+			this->fighter[0].draw(300, 300);
 		}
 		if (this->selectCount > 1)
 		{
-			this->fighter[1].draw(800, 300);
+			this->fighter[1].draw(1000, 300);
 		}
 	}
 }
