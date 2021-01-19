@@ -11,7 +11,7 @@
 namespace game
 {
 	using App = SceneManager<int, SceneData>;
-	class FighterSelect : App::Scene
+	class FighterSelect : public App::Scene
 	{
 	private:
 		std::vector<FighterData> allFighterData;

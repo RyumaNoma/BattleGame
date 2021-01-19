@@ -6,7 +6,7 @@
 namespace game
 {
 	using App = SceneManager<int, SceneData>;
-	class Battle : App::Scene
+	class Battle : public App::Scene
 	{
 	private:
 	public:

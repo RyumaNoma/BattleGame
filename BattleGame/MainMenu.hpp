@@ -7,7 +7,7 @@ namespace game
 {
 	using App = SceneManager<int, SceneData>;
 
-	class MainMenu : App::Scene
+	class MainMenu : public App::Scene
 	{
 	public:
 		MainMenu(const InitData& init);
