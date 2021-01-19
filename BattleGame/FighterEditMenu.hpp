@@ -6,6 +6,7 @@
 #include "SceneData.hpp"
 #include "FighterData.hpp"
 #include "Debug.hpp"
+#include "Button.hpp"
 
 namespace game
 {

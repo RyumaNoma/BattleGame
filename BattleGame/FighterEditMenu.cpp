@@ -16,6 +16,11 @@ namespace game
 
 	void FighterEditMenu::update()
 	{
+		if (isPressedBackButton())
+		{
+			changeScene(0);
+		}
+
 		if (SimpleGUI::Button(U"New Fighter", Vec2(1000, 50)))
 		{
 			getData().newFighter = true;
@@ -40,6 +45,7 @@ namespace game
 
 	void FighterEditMenu::draw() const
 	{
+		drawBackButton();
 		FontAsset(U"Title")(U"Fighter Edit Menu").drawAt(Scene::Center().x, 50, Palette::Black);
 
 		Line(300, 200 - 15, 1000, 200 - 15).draw(Palette::Skyblue);
