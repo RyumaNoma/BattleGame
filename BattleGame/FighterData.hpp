@@ -21,7 +21,7 @@ namespace game
 		FighterData();
 		std::string toS();
 		FighterData toO(const std::string& str);
-		String showS();
+		String showS() const;
 	};
 
 	std::vector<FighterData> loadData(std::string fileName);

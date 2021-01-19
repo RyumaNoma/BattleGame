@@ -86,7 +86,7 @@ namespace game
 		return (*this);
 	}
 
-	String FighterData::showS()
+	String FighterData::showS() const
 	{
 		String str;
 
