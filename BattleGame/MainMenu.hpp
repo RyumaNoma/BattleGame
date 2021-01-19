@@ -2,6 +2,7 @@
 
 #include <Siv3D.hpp>
 #include "SceneData.hpp"
+#include "Button.hpp"
 
 namespace game
 {
