@@ -24,6 +24,7 @@ namespace game
 		int inAirTime;
 		FighterState state;
 		int rigidityCount;
+		int hp;
 
 		int sordHand();
 	public:
@@ -60,6 +61,9 @@ namespace game
 		int getRigidityCount();
 		void setRigidityCount(int rigidiryFlame);
 		void decRigidity();
+
+		int getHP();
+		void hitDamage(int damage);
 
 		void draw(int startX, int startY) const;
 

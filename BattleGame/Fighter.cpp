@@ -50,6 +50,8 @@ namespace game
 		this->state = FighterState::None;
 		// Žc‚èd’¼ƒtƒŒ[ƒ€”
 		this->rigidityCount = 0;
+		// HP
+		this->hp = 0;
 	}
 
 	BodyPart Fighter::getPart(int partID) const
@@ -240,6 +242,16 @@ namespace game
 		{
 			this->state = FighterState::None;
 		}
+	}
+
+	int Fighter::getHP()
+	{
+		return this->hp;
+	}
+
+	void Fighter::hitDamage(int damage)
+	{
+		this->hp = std::max(this->hp-damage, 0);
 	}
 
 	void Fighter::draw(int startX, int startY) const
