@@ -20,6 +20,7 @@ namespace game
 
 		int flame;
 		int motionNum;
+		int inAirTime;
 
 		int sordHand();
 	public:
@@ -44,6 +45,10 @@ namespace game
 		int getMotionNum();
 		void setMotionNum(int motionNum);
 		void resetMotionNum();
+
+		int getInAirTime();
+		void setInAirTime(int inAirTime);
+		void resetInAirTime();
 
 		void draw(int startX, int startY) const;
 

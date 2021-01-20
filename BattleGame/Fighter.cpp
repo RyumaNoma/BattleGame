@@ -44,6 +44,8 @@ namespace game
 		this->flame = 0;
 		// ƒ‚[ƒVƒ‡ƒ“‚Ì”Ô†
 		this->motionNum = 0;
+		// ‹ó’†‚É‚¢‚éŽžŠÔ(’nã‚É‚¢‚é‚Æ‚«‚Í0)
+		this->inAirTime = 0;
 	}
 
 	BodyPart Fighter::getPart(int partID) const
@@ -179,6 +181,21 @@ namespace game
 	void Fighter::resetMotionNum()
 	{
 		Fighter::setMotionNum(0);
+	}
+
+	int Fighter::getInAirTime()
+	{
+		return this->inAirTime;
+	}
+
+	void Fighter::setInAirTime(int inAirTime)
+	{
+		this->inAirTime = inAirTime;
+	}
+
+	void Fighter::resetInAirTime()
+	{
+		Fighter::setInAirTime(0);
 	}
 
 	void Fighter::draw(int startX, int startY) const
