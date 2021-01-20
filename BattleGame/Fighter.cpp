@@ -198,6 +198,11 @@ namespace game
 		Fighter::setInAirTime(0);
 	}
 
+	void Fighter::incInAirTime()
+	{
+		++this->inAirTime;
+	}
+
 	void Fighter::draw(int startX, int startY) const
 	{
 		for (int i = 0; i < Fighter::BodyPartsCount; i++)

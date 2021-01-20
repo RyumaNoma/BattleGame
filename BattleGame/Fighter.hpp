@@ -49,6 +49,7 @@ namespace game
 		int getInAirTime();
 		void setInAirTime(int inAirTime);
 		void resetInAirTime();
+		void incInAirTime();
 
 		void draw(int startX, int startY) const;
 
