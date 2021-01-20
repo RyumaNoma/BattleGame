@@ -5,6 +5,7 @@
 #include "SceneData.hpp"
 #include "Fighter.hpp"
 #include"Motion.hpp"
+#include "Direction.hpp"
 
 namespace game
 {

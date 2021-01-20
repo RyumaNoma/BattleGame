@@ -11,6 +11,8 @@ namespace game
 		}
 		this->fighterX[0] = 300;
 		this->fighterX[1] = 1000;
+
+		this->fighter[1].setDirection(Direction::Left);
 	}
 
 	void Battle::update()
@@ -19,10 +21,17 @@ namespace game
 		{
 			if (const auto gamepad = Gamepad(i))
 			{
+				// ジャンプ中
+				if (this->fighter[i].getInAirTime() > 0)
+				{
+					motion::jump(this->fighter[i], this->fighterX[i], this->fighterY[i]);
+				}
+
+				// 実行中のモーション
 				switch (this->fighter[i].getMotionNum())
 				{
 				case 1:
-					motion::jump(this->fighter[i], this->fighterX[i], this->fighterY[i]);
+					motion::rotateSord(this->fighter[i], this->fighterX[i], this->fighterY[i]);
 					break;
 				default:
 					break;
@@ -40,7 +49,15 @@ namespace game
 				// L(上)
 				else if (gamepad.axes[1] < -0.5)
 				{
-					this->fighter->setMotionNum(1);
+					if (this->fighter[i].getInAirTime() == 0)
+					{
+						this->fighter[i].setInAirTime(1);
+					}
+				}
+				// Aボタン
+				if (gamepad.buttons[0].pressed())
+				{
+					this->fighter[i].setMotionNum(1);
 				}
 			}
 		}
@@ -50,6 +67,7 @@ namespace game
 
 	void Battle::draw() const
 	{
+		Line(0, 700, 1367, 700).draw(Palette::Brown);
 		for (int i = 0; i < 2; i++)
 		{
 			this->fighter[i].draw(this->fighterX[i], this->fighterY[i]);
