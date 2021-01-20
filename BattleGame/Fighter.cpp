@@ -259,6 +259,16 @@ namespace game
 		this->hp = std::max(this->hp-damage, 0);
 	}
 
+	bool Fighter::getGiveDamage() const
+	{
+		return this->giveDamage;
+	}
+
+	void Fighter::setGiveDamage(bool giveDamage)
+	{
+		this->giveDamage = giveDamage;
+	}
+
 	void Fighter::draw(int startX, int startY) const
 	{
 		for (int i = 0; i < Fighter::BodyPartsCount; i++)

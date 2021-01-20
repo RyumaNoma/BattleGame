@@ -25,6 +25,7 @@ namespace game
 		FighterState state;
 		int rigidityCount;
 		int hp;
+		bool giveDamage;
 
 		int sordHand();
 	public:
@@ -65,6 +66,9 @@ namespace game
 
 		int getHP() const;
 		void hitDamage(int damage);
+
+		bool getGiveDamage() const;
+		void setGiveDamage(bool giveDamage);
 
 		void draw(int startX, int startY) const;
 
