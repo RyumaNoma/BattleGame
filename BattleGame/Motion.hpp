@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Fighter.hpp"
+#include <cmath>
 
 namespace game
 {

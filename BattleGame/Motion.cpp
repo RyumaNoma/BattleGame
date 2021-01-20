@@ -6,10 +6,13 @@ namespace game
 	{
 		void jump(Fighter& fighter, int& fighterX, int& fighterY)
 		{
+			int lastPos = -sin(fighter.getFlame() / 50.0 * Math::Pi) * 100;
 			fighter.incFlame();
-			fighterY -= 5 * ((fighter.getFlame() < 30) ? 1 : -1);
+			int nowPos = -sin(fighter.getFlame() / 50.0 * Math::Pi) * 100;
+			
+			fighterY += nowPos - lastPos;
 
-			if (fighter.getFlame() == 60)
+			if (fighter.getFlame() == 50)
 			{
 				fighter.resetFlame();
 				fighter.resetMotionNum();
