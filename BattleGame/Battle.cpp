@@ -19,8 +19,9 @@ namespace game
 	{
 		for (int i = 0; i < 2; i++)
 		{
-			if (Battle::isHit(i, 1 - i))
+			if (Battle::isHit(i, 1 - i) && !this->fighter[i].getGiveDamage())
 			{
+				this->fighter[i].setGiveDamage(true);
 				this->fighter[1 - i].hitDamage(motion::motionTable[this->fighter[i].getMotionNum()][1]);
 			}
 
@@ -76,6 +77,11 @@ namespace game
 					{
 						this->fighter[i].setMotionNum(1);
 					}
+				}
+
+				if (this->fighter[i].getState() != FighterState::InMotion)
+				{
+					this->fighter[i].setGiveDamage(false);
 				}
 			}
 		}
