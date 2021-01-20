@@ -6,6 +6,8 @@
 #include "Fighter.hpp"
 #include"Motion.hpp"
 #include "Direction.hpp"
+#include "FighterState.hpp"
+#include "Debug.hpp"
 
 namespace game
 {

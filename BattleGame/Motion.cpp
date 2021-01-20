@@ -27,6 +27,7 @@ namespace game
 			{
 				fighter.resetFlame();
 				fighter.resetMotionNum();
+				fighter.setRigidityCount(60);
 			}
 		}
 	}

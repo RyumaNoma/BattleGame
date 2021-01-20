@@ -46,6 +46,10 @@ namespace game
 		this->motionNum = 0;
 		// 空中にいる時間(地上にいるときは0)
 		this->inAirTime = 0;
+		// ファイターの状態
+		this->state = FighterState::None;
+		// 残り硬直フレーム数
+		this->rigidityCount = 0;
 	}
 
 	BodyPart Fighter::getPart(int partID) const
@@ -176,6 +180,7 @@ namespace game
 	void Fighter::setMotionNum(int motionNum)
 	{
 		this->motionNum = motionNum;
+		this->state = FighterState::InMotion;
 	}
 
 	void Fighter::resetMotionNum()
@@ -201,6 +206,40 @@ namespace game
 	void Fighter::incInAirTime()
 	{
 		++this->inAirTime;
+	}
+
+	FighterState Fighter::getState()
+	{
+		return this->state;
+	}
+
+	void Fighter::setState(FighterState state)
+	{
+		this->state = state;
+	}
+
+	int Fighter::getRigidityCount()
+	{
+		return this->rigidityCount;
+	}
+
+	void Fighter::setRigidityCount(int rigidiryFlame)
+	{
+		this->rigidityCount = rigidiryFlame;
+		
+		if (rigidiryFlame > 0)
+		{
+			this->state = FighterState::Rigidity;
+		}
+	}
+
+	void Fighter::decRigidity()
+	{
+		--this->rigidityCount;
+		if (this->rigidityCount == 0)
+		{
+			this->state = FighterState::None;
+		}
 	}
 
 	void Fighter::draw(int startX, int startY) const

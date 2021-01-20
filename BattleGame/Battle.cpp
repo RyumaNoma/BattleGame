@@ -21,43 +21,55 @@ namespace game
 		{
 			if (const auto gamepad = Gamepad(i))
 			{
+				debug("Fighter State", static_cast<int>(this->fighter[i].getState()));
+
 				// ジャンプ中
 				if (this->fighter[i].getInAirTime() > 0)
 				{
 					motion::jump(this->fighter[i], this->fighterX[i], this->fighterY[i]);
 				}
 
-				// 実行中のモーション
-				switch (this->fighter[i].getMotionNum())
+				// モーション中
+				if (this->fighter[i].getState() == FighterState::InMotion)
 				{
-				case 1:
-					motion::rotateSord(this->fighter[i], this->fighterX[i], this->fighterY[i]);
-					break;
-				default:
-					break;
-				}
-
-				// L(左右)
-				if (gamepad.axes[0] > 0.5)
-				{
-					this->fighterX[i] += 10;
-				}
-				else if (gamepad.axes[0] < -0.5)
-				{
-					this->fighterX[i] -= 10;
-				}
-				// L(上)
-				else if (gamepad.axes[1] < -0.5)
-				{
-					if (this->fighter[i].getInAirTime() == 0)
+					switch (this->fighter[i].getMotionNum())
 					{
-						this->fighter[i].setInAirTime(1);
+					case 1:
+						motion::rotateSord(this->fighter[i], this->fighterX[i], this->fighterY[i]);
+						break;
+					default:
+						break;
 					}
 				}
-				// Aボタン
-				if (gamepad.buttons[0].pressed())
+				// 硬直中
+				else if (this->fighter[i].getState() == FighterState::Rigidity)
 				{
-					this->fighter[i].setMotionNum(1);
+					this->fighter[i].decRigidity();
+				}
+				else if (this->fighter[i].getState() == FighterState::None)
+				{
+					// L(左右)
+					if (gamepad.axes[0] > 0.5)
+					{
+						this->fighterX[i] += 10;
+					}
+					else if (gamepad.axes[0] < -0.5)
+					{
+						this->fighterX[i] -= 10;
+					}
+					// L(上)
+					else if (gamepad.axes[1] < -0.5)
+					{
+						if (this->fighter[i].getInAirTime() == 0)
+						{
+							this->fighter[i].setInAirTime(1);
+						}
+					}
+					// Aボタン
+					if (gamepad.buttons[0].pressed())
+					{
+						this->fighter[i].setMotionNum(1);
+					}
 				}
 			}
 		}

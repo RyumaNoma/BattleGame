@@ -6,6 +6,7 @@
 #include "BodyPart.hpp"
 #include "Direction.hpp"
 #include "FighterData.hpp"
+#include "FighterState.hpp"
 
 namespace game
 {
@@ -21,6 +22,8 @@ namespace game
 		int flame;
 		int motionNum;
 		int inAirTime;
+		FighterState state;
+		int rigidityCount;
 
 		int sordHand();
 	public:
@@ -50,6 +53,13 @@ namespace game
 		void setInAirTime(int inAirTime);
 		void resetInAirTime();
 		void incInAirTime();
+
+		FighterState getState();
+		void setState(FighterState state);
+
+		int getRigidityCount();
+		void setRigidityCount(int rigidiryFlame);
+		void decRigidity();
 
 		void draw(int startX, int startY) const;
 
