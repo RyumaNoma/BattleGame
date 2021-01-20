@@ -51,7 +51,7 @@ namespace game
 		// Žc‚èd’¼ƒtƒŒ[ƒ€”
 		this->rigidityCount = 0;
 		// HP
-		this->hp = 0;
+		this->hp = 100;
 	}
 
 	BodyPart Fighter::getPart(int partID) const
@@ -249,7 +249,7 @@ namespace game
 		}
 	}
 
-	int Fighter::getHP()
+	int Fighter::getHP() const
 	{
 		return this->hp;
 	}

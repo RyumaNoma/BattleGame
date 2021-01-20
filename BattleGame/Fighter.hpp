@@ -63,7 +63,7 @@ namespace game
 		void setRigidityCount(int rigidiryFlame);
 		void decRigidity();
 
-		int getHP();
+		int getHP() const;
 		void hitDamage(int damage);
 
 		void draw(int startX, int startY) const;
