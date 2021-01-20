@@ -21,8 +21,6 @@ namespace game
 		{
 			if (const auto gamepad = Gamepad(i))
 			{
-				debug("Fighter State", static_cast<int>(this->fighter[i].getState()));
-
 				// ジャンプ中
 				if (this->fighter[i].getInAirTime() > 0)
 				{
@@ -48,14 +46,17 @@ namespace game
 				}
 				else if (this->fighter[i].getState() == FighterState::None)
 				{
-					// L(左右)
+					// L(右)
 					if (gamepad.axes[0] > 0.5)
 					{
 						this->fighterX[i] += 10;
+						this->fighter[i].setDirection(Direction::Right);
 					}
+					// L(左)
 					else if (gamepad.axes[0] < -0.5)
 					{
 						this->fighterX[i] -= 10;
+						this->fighter[i].setDirection(Direction::Left);
 					}
 					// L(上)
 					else if (gamepad.axes[1] < -0.5)
