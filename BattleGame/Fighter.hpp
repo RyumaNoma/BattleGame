@@ -31,6 +31,7 @@ namespace game
 		Fighter();
 
 		BodyPart getPart(int partID) const;
+		void setAttack(int partID, bool isAttack);
 
 		void setDirection(Direction direction);
 		void revDirection();
