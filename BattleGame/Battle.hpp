@@ -8,6 +8,7 @@
 #include "Direction.hpp"
 #include "FighterState.hpp"
 #include "Debug.hpp"
+#include "BodyPart.hpp"
 
 namespace game
 {
@@ -22,6 +23,8 @@ namespace game
 		Battle(const InitData& init);
 		void update() override;
 		void draw() const override;
+
+		bool isHit(int from, int to);
 
 		void inField();
 	};
