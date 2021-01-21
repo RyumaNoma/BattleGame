@@ -1,7 +1,6 @@
 #pragma once
 
 #include <Siv3D.hpp>
-#include <queue>
 #include "SceneData.hpp"
 #include "Fighter.hpp"
 #include"Motion.hpp"

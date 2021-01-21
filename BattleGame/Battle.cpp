@@ -86,6 +86,21 @@ namespace game
 			}
 		}
 
+		// ŽŽ‡I—¹
+		if (this->fighter[0].getHP() == 0 || this->fighter[1].getHP() == 0)
+		{
+			if (this->fighter[0].getHP() == 0)
+			{
+				getData().winner = 1;
+			}
+			else
+			{
+				getData().winner = 0;
+			}
+
+			changeScene(5);
+		}
+
 		Battle::inField();
 	}
 
@@ -105,11 +120,6 @@ namespace game
 		for (int i = 0; i < 2; i++)
 		{
 			this->fighter[i].draw(this->fighterX[i], this->fighterY[i]);
-		}
-
-		if (this->fighter[0].getHP() == 0 || this->fighter[1].getHP() == 0)
-		{
-			FontAsset(U"Title")(U"Game Set").drawAt(Scene::Center(), Palette::Red);
 		}
 	}
 
