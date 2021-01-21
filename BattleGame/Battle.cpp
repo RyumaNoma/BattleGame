@@ -27,6 +27,7 @@ namespace game
 
 			if (const auto gamepad = Gamepad(i))
 			{
+				debug("connected controller", i + 1);
 				// ジャンプ中
 				if (this->fighter[i].getInAirTime() > 0)
 				{
@@ -40,6 +41,9 @@ namespace game
 					{
 					case 1:
 						motion::rotateSord(this->fighter[i], this->fighterX[i], this->fighterY[i]);
+						break;
+					case 2:
+						motion::throwSord(this->fighter[i], this->fighterX[i], this->fighterY[i]);
 						break;
 					default:
 						break;
@@ -76,6 +80,11 @@ namespace game
 					if (gamepad.buttons[0].pressed())
 					{
 						this->fighter[i].setMotionNum(1);
+					}
+					// Bボタン
+					if (gamepad.buttons[1].pressed())
+					{
+						this->fighter[i].setMotionNum(2);
 					}
 				}
 
