@@ -35,6 +35,7 @@ namespace game
 		void setPart(int partID, const BodyPart& bodyPart);
 		void setAttack(int partID, bool isAttack);
 
+		Direction getDirection();
 		void setDirection(Direction direction);
 		void revDirection();
 

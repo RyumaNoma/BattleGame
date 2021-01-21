@@ -69,6 +69,11 @@ namespace game
 		this->parts[partID].isAttack = isAttack;
 	}
 
+	Direction Fighter::getDirection()
+	{
+		return this->direction;
+	}
+
 	void Fighter::setDirection(Direction direction)
 	{
 		if (this->direction != direction)
