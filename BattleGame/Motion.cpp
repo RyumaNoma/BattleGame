@@ -31,18 +31,18 @@ namespace game
 			{
 				fighter.setAttack(6, true);
 			}
-			if (fighter.getFlame() == 21)
+
+			fighter.incFlame();
+			fighter.addRotate(6, 18);
+			fighter.setAttack(6, true);
+
+			if (fighter.getFlame() == 20)
 			{
 				fighter.setAttack(6, false);
 				fighter.resetFlame();
 				fighter.resetMotionNum();
 				fighter.setRigidityCount(motionTable[1][0]);
-				return;
 			}
-
-			fighter.incFlame();
-			fighter.addRotate(6, 18);
-			fighter.setAttack(6, true);
 		}
 
 		void throwSord(Fighter& fighter, int& fighterX, int& fighterY)
@@ -50,14 +50,6 @@ namespace game
 			if (fighter.getFlame() == 1)
 			{
 				fighter.setAttack(6, true);
-			}
-			else if (fighter.getFlame() == 21)
-			{
-				fighter.setAttack(6, false);
-				fighter.resetFlame();
-				fighter.resetMotionNum();
-				fighter.setRigidityCount(motionTable[2][0]);
-				return;
 			}
 
 			fighter.incFlame();
@@ -68,10 +60,10 @@ namespace game
 				switch (fighter.getDirection())
 				{
 				case Direction::Left:
-					sord.base.x -= 15;
+					sord.base.x -= 30;
 					break;
 				case Direction::Right:
-					sord.base.x += 15;
+					sord.base.x += 30;
 					break;
 				default:
 					break;
@@ -82,10 +74,10 @@ namespace game
 				switch (fighter.getDirection())
 				{
 				case Direction::Left:
-					sord.base.x += 15;
+					sord.base.x += 30;
 					break;
 				case Direction::Right:
-					sord.base.x -= 15;
+					sord.base.x -= 30;
 					break;
 				default:
 					break;
@@ -93,6 +85,14 @@ namespace game
 			}
 
 			fighter.setPart(6, sord);
+
+			if (fighter.getFlame() == 20)
+			{
+				fighter.setAttack(6, false);
+				fighter.resetFlame();
+				fighter.resetMotionNum();
+				fighter.setRigidityCount(motionTable[2][0]);
+			}
 		}
 	}
 }
