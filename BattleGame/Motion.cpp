@@ -97,7 +97,7 @@ namespace game
 
 		void shield(Fighter& fighter, int& fighterX, int& fighterY)
 		{
-			Circle(fighterX, fighterY + 200, 200).draw(Color(100, 168, 50, 0.5));
+			Circle(fighterX, fighterY + 200, 220).draw(Color(100, 168, 50, 100));
 		}
 	}
 }
