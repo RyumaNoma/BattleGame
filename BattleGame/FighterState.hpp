@@ -6,6 +6,7 @@ namespace game
 	{
 		None,
 		InMotion,
-		Rigidity
+		Rigidity,
+		Shield
 	};
 }
