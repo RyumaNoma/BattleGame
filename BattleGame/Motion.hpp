@@ -1,16 +1,19 @@
 #pragma once
 
-#include "Fighter.hpp"
 #include <cmath>
+#include "Fighter.hpp"
+#include "BodyPart.hpp"
+#include "Direction.hpp"
 
 namespace game
 {
 	namespace motion
 	{
 		// å„çdíº, É_ÉÅÅ[ÉW
-		extern const int motionTable[2][2];
+		extern const int motionTable[3][2];
 
 		void jump(Fighter& fighter, int& fighterX, int& fighterY);
 		void rotateSord(Fighter& fighter, int& fighterX, int& fighterY);
+		void throwSord(Fighter& fighter, int& fighterX, int& fighterY);
 	}
 }

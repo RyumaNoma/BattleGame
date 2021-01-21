@@ -5,9 +5,10 @@ namespace game
 	namespace motion
 	{
 		// å„çdíº, É_ÉÅÅ[ÉW
-		const int motionTable[2][2] = {
+		const int motionTable[3][2] = {
 			{0, 0},
-			{10, 10}// Palu
+			{10, 10},// rotateSord
+			{10, 5}// throwSord
 		};
 
 		void jump(Fighter& fighter, int& fighterX, int& fighterY)
@@ -26,17 +27,72 @@ namespace game
 
 		void rotateSord(Fighter& fighter, int& fighterX, int& fighterY)
 		{
-			fighter.incFlame();
-			fighter.addRotate(6, 18);
-			fighter.setAttack(6, true);
-
-			if (fighter.getFlame() == 20)
+			if (fighter.getFlame() == 1)
+			{
+				fighter.setAttack(6, true);
+			}
+			if (fighter.getFlame() == 21)
 			{
 				fighter.setAttack(6, false);
 				fighter.resetFlame();
 				fighter.resetMotionNum();
 				fighter.setRigidityCount(motionTable[1][0]);
+				return;
 			}
+
+			fighter.incFlame();
+			fighter.addRotate(6, 18);
+			fighter.setAttack(6, true);
+		}
+
+		void throwSord(Fighter& fighter, int& fighterX, int& fighterY)
+		{
+			if (fighter.getFlame() == 1)
+			{
+				fighter.setAttack(6, true);
+			}
+			else if (fighter.getFlame() == 21)
+			{
+				fighter.setAttack(6, false);
+				fighter.resetFlame();
+				fighter.resetMotionNum();
+				fighter.setRigidityCount(motionTable[2][0]);
+				return;
+			}
+
+			fighter.incFlame();
+			BodyPart sord = fighter.getPart(6);
+			
+			if (fighter.getFlame() <= 10)
+			{
+				switch (fighter.getDirection())
+				{
+				case Direction::Left:
+					sord.base.x -= 15;
+					break;
+				case Direction::Right:
+					sord.base.x += 15;
+					break;
+				default:
+					break;
+				}
+			}
+			else
+			{
+				switch (fighter.getDirection())
+				{
+				case Direction::Left:
+					sord.base.x += 15;
+					break;
+				case Direction::Right:
+					sord.base.x -= 15;
+					break;
+				default:
+					break;
+				}
+			}
+
+			fighter.setPart(6, sord);
 		}
 	}
 }
