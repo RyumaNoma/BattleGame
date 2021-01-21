@@ -10,5 +10,6 @@ namespace game
 		{
 			this->fighter[i] = Fighter();
 		}
+		this->winner = 0;
 	}
 }

@@ -10,6 +10,7 @@ namespace game
 		bool newFighter;
 		int fighterNum;
 		Fighter fighter[2];
+		int winner;
 
 		SceneData();
 	};
