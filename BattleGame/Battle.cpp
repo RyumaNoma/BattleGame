@@ -21,13 +21,26 @@ namespace game
 		{
 			if (Battle::isHit(i, 1 - i) && !this->fighter[i].getGiveDamage())
 			{
-				this->fighter[i].setGiveDamage(true);
-				this->fighter[1 - i].hitDamage(motion::motionTable[this->fighter[i].getMotionNum()][1]);
+				// grabなら
+				if (this->fighter[i].getMotionNum() == 3)
+				{
+					this->fighter[i].setGiveDamage(true);
+					this->fighter[1 - i].hitDamage(motion::motionTable[this->fighter[i].getMotionNum()][1]);
+				}
+				else if (this->fighter[1 - i].getState() != FighterState::Shield)
+				{
+					this->fighter[i].setGiveDamage(true);
+					this->fighter[1 - i].hitDamage(motion::motionTable[this->fighter[i].getMotionNum()][1]);
+				}
+			}
+
+			if (this->fighter[1 - i].getState() == FighterState::Shield)
+			{
+				this->fighter[1 - i].setState(FighterState::None);
 			}
 
 			if (const auto gamepad = Gamepad(i))
 			{
-				debug("connected controller", i + 1);
 				// ジャンプ中
 				if (this->fighter[i].getInAirTime() > 0)
 				{
@@ -44,6 +57,9 @@ namespace game
 						break;
 					case 2:
 						motion::throwSord(this->fighter[i], this->fighterX[i], this->fighterY[i]);
+						break;
+					case 3:
+						motion::grab(this->fighter[i], this->fighterX[i], this->fighterY[i]);
 						break;
 					default:
 						break;
@@ -85,6 +101,17 @@ namespace game
 					if (gamepad.buttons[1].pressed())
 					{
 						this->fighter[i].setMotionNum(2);
+					}
+					// Xボタン
+					if (gamepad.buttons[2].pressed())
+					{
+						motion::shield(this->fighter[i], this->fighterX[i], this->fighterY[i]);
+						this->fighter[i].setState(FighterState::Shield);
+					}
+					// Yボタン
+					if (gamepad.buttons[3].pressed())
+					{
+						this->fighter[i].setMotionNum(3);
 					}
 				}
 

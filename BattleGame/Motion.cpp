@@ -5,10 +5,11 @@ namespace game
 	namespace motion
 	{
 		// å„çdíº, É_ÉÅÅ[ÉW
-		const int motionTable[3][2] = {
+		const int motionTable[4][2] = {
 			{0, 0},
 			{10, 10},// rotateSord
-			{10, 5}// throwSord
+			{10, 10},// throwSord
+			{10, 10}
 		};
 
 		void jump(Fighter& fighter, int& fighterX, int& fighterY)
@@ -34,7 +35,6 @@ namespace game
 
 			fighter.incFlame();
 			fighter.addRotate(6, 18);
-			fighter.setAttack(6, true);
 
 			if (fighter.getFlame() == 20)
 			{
@@ -98,6 +98,24 @@ namespace game
 		void shield(Fighter& fighter, int& fighterX, int& fighterY)
 		{
 			Circle(fighterX, fighterY + 200, 220).draw(Color(100, 168, 50, 100));
+		}
+
+		void grab(Fighter& fighter, int& fighterX, int& fighterY)
+		{
+			if (fighter.getFlame() == 1)
+			{
+				fighter.setAttack(3, true);
+			}
+
+			fighter.incFlame();
+
+			if (fighter.getFlame() == 5)
+			{
+				fighter.setAttack(3, false);
+				fighter.resetFlame();
+				fighter.resetMotionNum();
+				fighter.setRigidityCount(motionTable[3][0]);
+			}
 		}
 	}
 }
