@@ -59,6 +59,11 @@ namespace game
 		return this->parts[partID];
 	}
 
+	void Fighter::setPart(int partID, const BodyPart& bodyPart)
+	{
+		this->parts[partID] = bodyPart;
+	}
+
 	void Fighter::setAttack(int partID, bool isAttack)
 	{
 		this->parts[partID].isAttack = isAttack;
