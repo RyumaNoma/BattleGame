@@ -94,5 +94,10 @@ namespace game
 				fighter.setRigidityCount(motionTable[2][0]);
 			}
 		}
+
+		void shield(Fighter& fighter, int& fighterX, int& fighterY)
+		{
+			Circle(fighterX, fighterY + 200, 200).draw(Color(100, 168, 50, 0.5));
+		}
 	}
 }
