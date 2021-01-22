@@ -3,7 +3,8 @@
 // 関数
 #include "Debug.hpp"
 #include "Button.hpp"
-#include "Fighter.hpp"
+#include "Cursor.hpp"
+#include "Function.hpp"
 
 // ゲームに関するヘッダーファイル
 #include "BodyPart.hpp"
