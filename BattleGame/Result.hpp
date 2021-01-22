@@ -4,6 +4,7 @@
 #include "SceneData.hpp"
 #include "Fighter.hpp"
 #include "Button.hpp"
+#include "Cursor.hpp"
 
 namespace game
 {
@@ -11,6 +12,7 @@ namespace game
 	class Result : public App::Scene
 	{
 	private:
+		Cursor cursor[2];
 	public:
 		Result(const InitData& init);
 		void update() override;
