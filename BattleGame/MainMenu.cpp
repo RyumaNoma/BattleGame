@@ -17,12 +17,16 @@ namespace game
 			this->cursor[i].update();
 		}
 
-		if (isPressed(100, 100, 400, 200) || this->cursor[0].isPressed() || this->cursor[1].isPressed())
+		if (isPressed(100, 100, 400, 200) ||
+			this->cursor[0].isPressed(100, 100, 400, 200) ||
+			this->cursor[1].isPressed(100, 100, 400, 200))
 		{
 			changeScene(3);
 		}
 
-		if (isPressed(100, 300, 400, 400) || this->cursor[0].isPressed() || this->cursor[1].isPressed())
+		if (isPressed(100, 300, 400, 400) ||
+			this->cursor[0].isPressed(100, 300, 400, 400) ||
+			this->cursor[1].isPressed(100, 300, 400, 400))
 		{
 			changeScene(1);
 		}
