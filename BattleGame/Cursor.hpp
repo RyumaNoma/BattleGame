@@ -15,6 +15,8 @@ namespace game
 		Cursor();
 		Cursor(Point point, int padID);
 
+		Point getPos() const;
+
 		bool isPressed() const;
 		bool isPressed(const int& startX, const int& startY, const int& endX, const int& endY) const;
 		bool isPressedBackButton() const;

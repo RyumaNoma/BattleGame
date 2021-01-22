@@ -16,6 +16,11 @@ namespace game
 		this->buttonA = false;
 	}
 
+	Point Cursor::getPos() const
+	{
+		return this->point;
+	}
+
 	bool Cursor::isPressed() const
 	{
 		return this->buttonA;
