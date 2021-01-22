@@ -6,12 +6,14 @@ namespace game
 	{
 		this->point = Point(Scene::Center());
 		this->padID = 0;
+		this->buttonA = false;
 	}
 
 	Cursor::Cursor(Point point, int padID)
 	{
 		this->point = point;
 		this->padID = padID;
+		this->buttonA = false;
 	}
 
 	bool Cursor::isPressed() const
@@ -24,7 +26,7 @@ namespace game
 		if (const auto gamepad = Gamepad(this->padID))
 		{
 			// ç∂
-			if (gamepad.axes[0] < 0.5)
+			if (gamepad.axes[0] < -0.5)
 			{
 				this->point.x -= 5;
 			}
@@ -35,7 +37,7 @@ namespace game
 			}
 
 			// è„
-			if (gamepad.axes[1] < 0.5)
+			if (gamepad.axes[1] < -0.5)
 			{
 				this->point.y -= 5;
 			}
