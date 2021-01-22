@@ -15,7 +15,7 @@ namespace game
 		this->name = "No Name";
 	}
 
-	std::string FighterData::toS()
+	std::string FighterData::toS() const
 	{
 		std::string str = "";
 

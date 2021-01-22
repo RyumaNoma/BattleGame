@@ -19,7 +19,7 @@ namespace game
 		std::string name;
 
 		FighterData();
-		std::string toS();
+		std::string toS() const;
 		FighterData toO(const std::string& str);
 		String showS() const;
 	};

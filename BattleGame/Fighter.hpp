@@ -27,7 +27,7 @@ namespace game
 		int hp;
 		bool giveDamage;
 
-		int sordHand();
+		int sordHand() const;
 	public:
 		Fighter();
 
@@ -35,7 +35,7 @@ namespace game
 		void setPart(int partID, const BodyPart& bodyPart);
 		void setAttack(int partID, bool isAttack);
 
-		Direction getDirection();
+		Direction getDirection() const;
 		void setDirection(Direction direction);
 		void revDirection();
 
@@ -45,24 +45,24 @@ namespace game
 		void setRotate(int partID, double rotate);
 		void addRotate(int partID, double rotate);
 
-		int getFlame();
+		int getFlame() const;
 		void setFlame(int flame);
 		void resetFlame();
 		void incFlame();
 
-		int getMotionNum();
+		int getMotionNum() const;
 		void setMotionNum(int motionNum);
 		void resetMotionNum();
 
-		int getInAirTime();
+		int getInAirTime() const;
 		void setInAirTime(int inAirTime);
 		void resetInAirTime();
 		void incInAirTime();
 
-		FighterState getState();
+		FighterState getState() const;
 		void setState(FighterState state);
 
-		int getRigidityCount();
+		int getRigidityCount() const;
 		void setRigidityCount(int rigidiryFlame);
 		void decRigidity();
 

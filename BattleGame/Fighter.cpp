@@ -8,7 +8,7 @@ namespace game
 		{Palette::Red, Palette::Red, Palette::Red, Palette::Red, Palette::Blue, Palette::Blue, Palette::Gray}
 	};
 
-	int Fighter::sordHand()
+	int Fighter::sordHand() const
 	{
 		if (this->direction == Direction::Left)
 		{
@@ -69,7 +69,7 @@ namespace game
 		this->parts[partID].isAttack = isAttack;
 	}
 
-	Direction Fighter::getDirection()
+	Direction Fighter::getDirection() const
 	{
 		return this->direction;
 	}
@@ -169,7 +169,7 @@ namespace game
 		}
 	}
 
-	int Fighter::getFlame()
+	int Fighter::getFlame() const
 	{
 		return this->flame;
 	}
@@ -189,7 +189,7 @@ namespace game
 		++this->flame;
 	}
 
-	int Fighter::getMotionNum()
+	int Fighter::getMotionNum() const
 	{
 		return this->motionNum;
 	}
@@ -205,7 +205,7 @@ namespace game
 		Fighter::setMotionNum(0);
 	}
 
-	int Fighter::getInAirTime()
+	int Fighter::getInAirTime() const
 	{
 		return this->inAirTime;
 	}
@@ -225,7 +225,7 @@ namespace game
 		++this->inAirTime;
 	}
 
-	FighterState Fighter::getState()
+	FighterState Fighter::getState() const
 	{
 		return this->state;
 	}
@@ -235,7 +235,7 @@ namespace game
 		this->state = state;
 	}
 
-	int Fighter::getRigidityCount()
+	int Fighter::getRigidityCount() const
 	{
 		return this->rigidityCount;
 	}
