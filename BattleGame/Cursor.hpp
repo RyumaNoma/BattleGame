@@ -1,0 +1,25 @@
+#pragma once
+
+#include <Siv3D.hpp>
+
+namespace game
+{
+	class Cursor
+	{
+	private:
+		Point point;
+		int padID;
+		// ‰Ÿ‚³‚ê‚Ä‚¢‚½‚çtrue
+		bool buttonA;
+	public:
+		Cursor();
+		Cursor(Point point, int padID);
+
+		bool isPressed() const;
+
+		// gamepad‚ªÚ‘±‚³‚ê‚Ä‚¢‚½‚çtrue
+		bool update();
+		bool draw() const;
+	};
+}
+
