@@ -9,8 +9,10 @@ namespace game
 	private:
 		Point point;
 		int padID;
-		// ‰Ÿ‚³‚ê‚Ä‚¢‚½‚çtrue
+		// ‰Ÿ‚³‚ê‚½‚çtrue
 		bool buttonA;
+		// ‰Ÿ‚³‚ê‘±‚¯‚Ä‚¢‚½‚çtrue
+		bool keep;
 	public:
 		Cursor();
 		Cursor(Point point, int padID);

@@ -7,6 +7,7 @@ namespace game
 		this->point = Point(Scene::Center());
 		this->padID = 0;
 		this->buttonA = false;
+		this->keep = false;
 	}
 
 	Cursor::Cursor(Point point, int padID)
@@ -71,13 +72,22 @@ namespace game
 				this->point.y += 5;
 			}
 
-			// A‚Ú‚½‚ñ‚ª‚¨‚³‚ê‚Ä‚¢‚½‚ç
+			// A‚Ú‚½‚ñ‚ª‚¨‚³‚êŽn‚ß‚½‚ç
 			if (gamepad.buttons[0].pressed())
 			{
-				this->buttonA = true;
+				if (this->keep)
+				{
+					this->buttonA = false;
+				}
+				else
+				{
+					this->buttonA = true;
+					this->keep = true;
+				}
 			}
 			else
 			{
+				this->keep = false;
 				this->buttonA = false;
 			}
 
