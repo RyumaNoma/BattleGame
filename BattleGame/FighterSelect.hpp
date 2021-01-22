@@ -7,6 +7,7 @@
 #include "Fighter.hpp"
 #include "FighterData.hpp"
 #include "Button.hpp"
+#include "Cursor.hpp"
 
 namespace game
 {
@@ -18,7 +19,7 @@ namespace game
 		Fighter fighter[2];
 		FighterData fighterData[2];
 		int selectCount;
-
+		Cursor cursor[2];
 	public:
 		FighterSelect(const InitData& init);
 		void update() override;
