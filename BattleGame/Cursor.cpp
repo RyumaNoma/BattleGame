@@ -16,9 +16,18 @@ namespace game
 		this->buttonA = false;
 	}
 
-	bool Cursor::isPressed() const
+	bool Cursor::isPressed(const int& startX, const int& startY, const int& endX, const int& endY) const
 	{
-		return this->buttonA;
+		if (this->buttonA)
+		{
+			if (startX <= this->point.x && this->point.x <= endX &&
+				startY <= this->point.y && this->point.y <= endY)
+			{
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	bool Cursor::update()

@@ -15,7 +15,7 @@ namespace game
 		Cursor();
 		Cursor(Point point, int padID);
 
-		bool isPressed() const;
+		bool isPressed(const int& startX, const int& startY, const int& endX, const int& endY) const;
 
 		// gamepad‚ªÚ‘±‚³‚ê‚Ä‚¢‚½‚çtrue
 		bool update();
