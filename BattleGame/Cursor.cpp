@@ -16,6 +16,11 @@ namespace game
 		this->buttonA = false;
 	}
 
+	bool Cursor::isPressed() const
+	{
+		return this->buttonA;
+	}
+
 	bool Cursor::isPressed(const int& startX, const int& startY, const int& endX, const int& endY) const
 	{
 		if (this->buttonA)
