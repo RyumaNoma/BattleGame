@@ -30,6 +30,11 @@ namespace game
 		return false;
 	}
 
+	bool Cursor::isPressedBackButton() const
+	{
+		return Cursor::isPressed(0, 0, 100, 50);
+	}
+
 	bool Cursor::update()
 	{
 		if (const auto gamepad = Gamepad(this->padID))
