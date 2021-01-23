@@ -25,6 +25,7 @@ namespace game
 		FighterState state;
 		int rigidityCount;
 		int hp;
+		// ‚»‚ÌUŒ‚‚Å‘Šè‚Éƒ_ƒ[ƒW‚ğ—^‚¦‚½‚çtrue‚É‚È‚é
 		bool giveDamage;
 
 		int sordHand() const;
