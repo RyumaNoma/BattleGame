@@ -117,5 +117,11 @@ namespace game
 				fighter.setRigidityCount(motionTable[3][0]);
 			}
 		}
+
+		void blast(Fighter& fighter, int& fighterX, int& fighterY, Direction direction, int dist)
+		{
+			fighterX += (direction == Direction::Left) ? -dist : dist;
+			fighterY -= 50;
+		}
 	}
 }
