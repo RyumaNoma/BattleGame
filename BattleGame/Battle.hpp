@@ -26,6 +26,7 @@ namespace game
 		bool isHit(int from, int to);
 
 		void inField();
+		void gravity();
 	};
 }
 

@@ -19,6 +19,8 @@ namespace game
 	{
 		for (int i = 0; i < 2; i++)
 		{
+			// fighter[i]の攻撃がfighter[1-i]にあたった
+			// まだ攻撃を当てていないなら
 			if (Battle::isHit(i, 1 - i) && !this->fighter[i].getGiveDamage())
 			{
 				// grabなら
@@ -26,11 +28,15 @@ namespace game
 				{
 					this->fighter[i].setGiveDamage(true);
 					this->fighter[1 - i].hitDamage(motion::motionTable[this->fighter[i].getMotionNum()][1]);
+					// ふっとび
+					motion::blast(this->fighter[1 - i], this->fighterX[1 - i], this->fighterY[1 - i], this->fighter[i].getDirection(), 100);
 				}
 				else if (this->fighter[1 - i].getState() != FighterState::Shield)
 				{
 					this->fighter[i].setGiveDamage(true);
 					this->fighter[1 - i].hitDamage(motion::motionTable[this->fighter[i].getMotionNum()][1]);
+					// ふっとび
+					motion::blast(this->fighter[1 - i], this->fighterX[1 - i], this->fighterY[1 - i], this->fighter[i].getDirection(), 100);
 				}
 			}
 
@@ -138,6 +144,7 @@ namespace game
 		}
 
 		Battle::inField();
+		Battle::gravity();
 	}
 
 	void Battle::draw() const
@@ -194,6 +201,20 @@ namespace game
 			if (this->fighterX[i] > 1300) this->fighterX[i] = 1300;
 			if (this->fighterY[i] < 0) this->fighterY[i] = 0;
 			if (this->fighterY[i] > 300) this->fighterY[i] = 300;
+		}
+	}
+
+	// 毎フレーム3だけ落ちる
+	void Battle::gravity()
+	{
+		for (int i = 0; i < 2; i++)
+		{
+			//空中にいる
+			// ジャンプはしていない
+			if (this->fighterY[i] < 300 && this->fighter[i].getInAirTime() == 0)
+			{
+				this->fighterY[i] = std::min(300, this->fighterY[i] + 3);
+			}
 		}
 	}
 }
