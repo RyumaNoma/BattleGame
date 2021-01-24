@@ -19,7 +19,7 @@ namespace game
 
 	void Battle::update()
 	{
-
+		// 攻撃が当たったか
 		for (int i = 0; i < 2; i++)
 		{
 			// fighter[i]の攻撃がfighter[1-i]にあたった
@@ -38,6 +38,19 @@ namespace game
 					this->fighter[1 - i].setBlastCount(15);
 					this->fighter[1 - i].setBlastDirection(this->fighter[i].getDirection());
 				}
+			}
+		}
+
+		//飛び道具
+		for (int i = 0; i < this->firearm.size(); i++)
+		{
+			switch (this->firearm[i].id)
+			{
+			case 5:
+				motion::slashWave(this->firearm[i]);
+				break;
+			default:
+				break;
 			}
 		}
 
@@ -80,6 +93,9 @@ namespace game
 					case 3:
 						motion::grab(this->fighter[i], this->fighterX[i], this->fighterY[i]);
 						break;
+					case 5:
+						motion::slashWave(this->fighter[i], this->fighterX[i], this->fighterY[i], this->fighter[i].getDirection(), this->firearm);
+						break;
 					default:
 						break;
 					}
@@ -89,6 +105,7 @@ namespace game
 				{
 					this->fighter[i].decRigidity();
 				}
+				// デフォルトの状態
 				else if (this->fighter[i].getState() == FighterState::None)
 				{
 					// L(右)
@@ -132,6 +149,11 @@ namespace game
 					{
 						this->fighter[i].setMotionNum(3);
 					}
+					// Rボタン
+					if (gamepad.axes[2] < -0.5)
+					{
+						this->fighter[i].setMotionNum(5);
+					}
 				}
 
 				if (this->fighter[i].getState() != FighterState::InMotion)
@@ -174,10 +196,17 @@ namespace game
 
 		// 地面
 		Line(0, 1000, 1980, 1000).draw(Palette::Brown);
+
 		// Fighter
 		for (int i = 0; i < 2; i++)
 		{
 			this->fighter[i].draw(this->fighterX[i], this->fighterY[i]);
+		}
+
+		// 飛び道具
+		for (int i = 0; i < this->firearm.size(); i++)
+		{
+			this->firearm[i].draw();
 		}
 	}
 
