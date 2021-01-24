@@ -24,19 +24,19 @@ namespace game
 	{
 		this->parts.resize(BodyPartsCount);
 		// “ª
-		this->parts[0] = BodyPart( Palette::Black, 100, 100, Point(-50, 0), 0, Point(0, 100), 0, 0, 0, false, true);
+		this->parts[0] = BodyPart(Palette::Black, 100, 100, Point(-50, 0), 0, Point(0, 100), 0, 0, 0, false, true);
 		// “·‘Ì
-		this->parts[1] = BodyPart( Palette::Red, 50, 200, Point(-25, 100), 0, Point(0, 200), 0, 0, 0, false, true);
+		this->parts[1] = BodyPart(Palette::Red, 50, 200, Point(-25, 100), 0, Point(0, 200), 0, 0, 0, false, true);
 		// ¶˜r
-		this->parts[2] = BodyPart( Palette::Blue, 100,20, Point(-125, 150), 0, Point(-25, 150), 0, 0, 0, false, true);
+		this->parts[2] = BodyPart(Palette::Blue, 100, 20, Point(-125, 150), 0, Point(-25, 150), 0, 0, 0, false, true);
 		// ‰E˜r
-		this->parts[3] = BodyPart( Palette::Yellow, 100, 20, Point(25, 150), 0, Point(25, 150), 0, 0, 0, false, true);
+		this->parts[3] = BodyPart(Palette::Yellow, 100, 20, Point(25, 150), 0, Point(25, 150), 0, 0, 0, false, true);
 		// ¶‘«
-		this->parts[4] = BodyPart( Palette::Green, 20, 100, Point(-45, 300), 0, Point(-25, 300), 0, 0, 0, false, true);
+		this->parts[4] = BodyPart(Palette::Green, 20, 100, Point(-45, 300), 0, Point(-25, 300), 0, 0, 0, false, true);
 		// ‰E‘«
-		this->parts[5] = BodyPart( Palette::Purple, 20, 100, Point(25, 300), 0, Point(25, 300), 0, 0, 0, false, true);
+		this->parts[5] = BodyPart(Palette::Purple, 20, 100, Point(25, 300), 0, Point(25, 300), 0, 0, 0, false, true);
 		// Œ•
-		this->parts[6] = BodyPart( Palette::Gray, 10, 150, Point(120, 10), 0, Point(25, 150), 0, 120, 160, false, true);
+		this->parts[6] = BodyPart(Palette::Gray, 10, 150, Point(120, 10), 0, Point(25, 150), 0, 120, 160, false, true);
 
 		// Œü‚«
 		this->direction = Direction::Right;
@@ -243,7 +243,7 @@ namespace game
 	void Fighter::setRigidityCount(int rigidiryFlame)
 	{
 		this->rigidityCount = rigidiryFlame;
-		
+
 		if (rigidiryFlame > 0)
 		{
 			this->state = FighterState::Rigidity;
@@ -254,6 +254,25 @@ namespace game
 	{
 		--this->rigidityCount;
 		if (this->rigidityCount == 0)
+		{
+			this->state = FighterState::None;
+		}
+	}
+
+	int Fighter::getBlastCount() const
+	{
+		return this->blastCount;
+	}
+
+	void Fighter::setBlastCount(int blastRigidity)
+	{
+		this->blastCount = blastRigidity;
+	}
+
+	void Fighter::decBlastCount()
+	{
+		--this->blastCount;
+		if (this->blastCount <= 0)
 		{
 			this->state = FighterState::None;
 		}

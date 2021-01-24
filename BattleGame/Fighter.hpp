@@ -24,6 +24,7 @@ namespace game
 		int inAirTime;
 		FighterState state;
 		int rigidityCount;
+		int blastCount;
 		int hp;
 		// ‚»‚ÌUŒ‚‚Å‘Šè‚Éƒ_ƒ[ƒW‚ğ—^‚¦‚½‚çtrue‚É‚È‚é
 		bool giveDamage;
@@ -66,6 +67,10 @@ namespace game
 		int getRigidityCount() const;
 		void setRigidityCount(int rigidiryFlame);
 		void decRigidity();
+
+		int getBlastCount() const;
+		void setBlastCount(int blastRigidity);
+		void decBlastCount();
 
 		int getHP() const;
 		void hitDamage(int damage);
