@@ -7,9 +7,9 @@ namespace game
 		// å„çdíº, É_ÉÅÅ[ÉW
 		const int motionTable[4][2] = {
 			{0, 0},
-			{10, 30},// rotateSord
-			{10, 30},// throwSord
-			{10, 30},// grab
+			{30, 10},// rotateSord
+			{30, 10},// throwSord
+			{30, 10},// grab
 		};
 
 		void jump(Fighter& fighter, int& fighterX, int& fighterY)
