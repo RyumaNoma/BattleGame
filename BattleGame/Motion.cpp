@@ -125,24 +125,24 @@ namespace game
 			fighterY -= distY;
 		}
 	
-		void slashWave(Fighter& fighter, int& fighterX, int& fighterY, Direction direction, std::vector<Firearm>& firearms)
+		void slashWave(Fighter& fighter, int& fighterX, int& fighterY, Direction direction, Firearm& firearm)
 		{
-			Firearm slashWave;
+			fighter.incFlame();
+
 			// Œ©‚½–Ú‚Ìİ’è
-			slashWave.body.color = Palette::Purple;
-			slashWave.body.width = 40;
-			slashWave.body.height = 200;
+			firearm.body.color = Palette::Purple;
+			firearm.body.width = 40;
+			firearm.body.height = 200;
+			firearm.body.isAttack = true;
+			firearm.body.isVisible = true;
 
 			// ”­¶ˆÊ’uEŒü‚«‚Ìİ’è
-			slashWave.pos.x = fighterX + ((direction == Direction::Left) ? -20 : 20);
-			slashWave.pos.y = fighterY;
-			slashWave.direction = direction;
+			firearm.pos.x = fighterX + ((direction == Direction::Left) ? -20 : 20);
+			firearm.pos.y = fighterY;
+			firearm.direction = direction;
 
 			// ID‚Ìİ’è
-			slashWave.id = 5;
-			
-			// ”ò‚Ñ“¹‹ï‚Æ‚µ‚Ä’Ç‰Á
-			firearms.push_back(slashWave);
+			firearm.id = 5;
 
 			if (fighter.getFlame() == 1)
 			{
