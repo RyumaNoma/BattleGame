@@ -9,7 +9,7 @@ namespace game
 			{0, 0},
 			{10, 10},// rotateSord
 			{10, 10},// throwSord
-			{10, 10}
+			{10, 30},// grab
 		};
 
 		void jump(Fighter& fighter, int& fighterX, int& fighterY)
