@@ -25,6 +25,7 @@ namespace game
 		FighterState state;
 		int rigidityCount;
 		int blastCount;
+		Direction blastDirection;
 		int hp;
 		// ‚»‚ÌUŒ‚‚Å‘Šè‚Éƒ_ƒ[ƒW‚ğ—^‚¦‚½‚çtrue‚É‚È‚é
 		bool giveDamage;
@@ -71,6 +72,9 @@ namespace game
 		int getBlastCount() const;
 		void setBlastCount(int blastRigidity);
 		void decBlastCount();
+
+		Direction getBlastDirection() const;
+		void setBlastDirection(Direction direction);
 
 		int getHP() const;
 		void hitDamage(int damage);

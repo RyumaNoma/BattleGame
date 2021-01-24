@@ -278,6 +278,16 @@ namespace game
 		}
 	}
 
+	Direction Fighter::getBlastDirection() const
+	{
+		return this->blastDirection;
+	}
+
+	void Fighter::setBlastDirection(Direction direction)
+	{
+		this->blastDirection = direction
+	}
+
 	int Fighter::getHP() const
 	{
 		return this->hp;
