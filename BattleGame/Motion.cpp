@@ -133,9 +133,13 @@ namespace game
 			slashWave.body.width = 40;
 			slashWave.body.height = 200;
 
-			// ”­¶ˆÊ’u‚Ìİ’è
+			// ”­¶ˆÊ’uEŒü‚«‚Ìİ’è
 			slashWave.pos.x = fighterX + ((direction == Direction::Left) ? -20 : 20);
 			slashWave.pos.y = fighterY;
+			slashWave.direction = direction;
+
+			// ID‚Ìİ’è
+			slashWave.id = 5;
 			
 			// ”ò‚Ñ“¹‹ï‚Æ‚µ‚Ä’Ç‰Á
 			firearms.push_back(slashWave);
