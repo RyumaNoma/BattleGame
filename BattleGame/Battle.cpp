@@ -156,6 +156,7 @@ namespace game
 		}
 
 		Battle::inField();
+		Battle::firearmInField();
 		Battle::gravity();
 	}
 
@@ -213,6 +214,20 @@ namespace game
 			if (this->fighterX[i] > 1930) this->fighterX[i] = 1930;
 			if (this->fighterY[i] < 0) this->fighterY[i] = 0;
 			if (this->fighterY[i] > 600) this->fighterY[i] = 600;
+		}
+	}
+
+	void Battle::firearmInField()
+	{
+		for (int i = 0; i < this->firearm.size(); i++)
+		{
+			int x = this->firearm[i].pos.x;
+			int y = this->firearm[i].pos.y;
+			if (x < 0 || 1980 < x ||
+				y < 0 || 1000 < x)
+			{
+				this->firearm.erase(this->firearm.begin() + i);
+			}
 		}
 	}
 
