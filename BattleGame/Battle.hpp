@@ -32,6 +32,8 @@ namespace game
 		void inField();
 		void firearmInField();
 		void gravity();
+		// UŒ‚”»’è‚ª‚È‚­‚È‚Á‚½”ò‚Ñ“¹‹ï‚ğÁ‚·
+		void eraseFirearm();
 	};
 }
 

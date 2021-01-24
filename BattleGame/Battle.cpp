@@ -19,6 +19,7 @@ namespace game
 
 	void Battle::update()
 	{
+
 		for (int i = 0; i < 2; i++)
 		{
 			// fighter[i]‚ÌUŒ‚‚ªfighter[1-i]‚É‚ ‚½‚Á‚½
@@ -158,6 +159,7 @@ namespace game
 		Battle::inField();
 		Battle::firearmInField();
 		Battle::gravity();
+		Battle::eraseFirearm();
 	}
 
 	void Battle::draw() const
@@ -241,6 +243,17 @@ namespace game
 			if (this->fighterY[i] < 600 && this->fighter[i].getInAirTime() == 0)
 			{
 				this->fighterY[i] = std::min(600, this->fighterY[i] + 3);
+			}
+		}
+	}
+
+	void Battle::eraseFirearm()
+	{
+		for (int i = 0; i < this->firearm.size(); i++)
+		{
+			if (!this->firearm[i].body.isAttack)
+			{
+				this->firearm.erase(this->firearm.begin() + i);
 			}
 		}
 	}
