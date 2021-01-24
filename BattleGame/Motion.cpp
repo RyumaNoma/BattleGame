@@ -5,11 +5,12 @@ namespace game
 	namespace motion
 	{
 		// 後硬直, ダメージ
-		const int motionTable[4][2] = {
+		const int motionTable[5][2] = {
 			{0, 0},
 			{30, 10},// rotateSord
 			{30, 10},// throwSord
 			{30, 10},// grab
+			{30, 10},// slashWave
 		};
 
 		void jump(Fighter& fighter, int& fighterX, int& fighterY)
@@ -122,6 +123,35 @@ namespace game
 		{
 			fighterX += (direction == Direction::Left) ? -distX : distX;
 			fighterY -= distY;
+		}
+	
+		void slashWave(Fighter& fighter, int& fighterX, int& fighterY, Direction direction, std::vector<Firearm>& firearms)
+		{
+			Firearm slashWave;
+			// 見た目の設定
+			slashWave.body.color = Palette::Purple;
+			slashWave.body.width = 40;
+			slashWave.body.height = 200;
+
+			// 発生位置の設定
+			slashWave.pos.x = fighterX + ((direction == Direction::Left) ? -20 : 20);
+			slashWave.pos.y = fighterY;
+			
+			// 飛び道具として追加
+			firearms.push_back(slashWave);
+
+			if (fighter.getFlame() == 1)
+			{
+				fighter.resetFlame();
+				fighter.resetMotionNum();
+				fighter.setRigidityCount(motionTable[4][0]);
+			}
+		}
+	
+		void slashWave(Firearm& firearm)
+		{
+			++firearm.flame;
+			firearm.pos.x += ((firearm.direction == Direction::Left) ? -10 : 10);
 		}
 	}
 }
