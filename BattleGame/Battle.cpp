@@ -24,22 +24,22 @@ namespace game
 			if (Battle::isHit(i, 1 - i) && !this->fighter[i].getGiveDamage())
 			{
 				// grabなら
-				if (this->fighter[i].getMotionNum() == 3)
+				// シールドを張っていなかったら
+				if (this->fighter[i].getMotionNum() == 3 ||
+					this->fighter[1 - i].getState() != FighterState::Shield)
 				{
 					this->fighter[i].setGiveDamage(true);
 					this->fighter[1 - i].hitDamage(motion::motionTable[this->fighter[i].getMotionNum()][1]);
 					// ふっとび
-					motion::blast(this->fighter[1 - i], this->fighterX[1 - i], this->fighterY[1 - i], this->fighter[i].getDirection(), 100);
-				}
-				else if (this->fighter[1 - i].getState() != FighterState::Shield)
-				{
-					this->fighter[i].setGiveDamage(true);
-					this->fighter[1 - i].hitDamage(motion::motionTable[this->fighter[i].getMotionNum()][1]);
-					// ふっとび
-					motion::blast(this->fighter[1 - i], this->fighterX[1 - i], this->fighterY[1 - i], this->fighter[i].getDirection(), 100);
+					this->fighter[1 - i].setState(FighterState::Blast);
+					this->fighter[1 - i].setBlastCount(10);
+					this->fighter[1 - i].setBlastDirection(this->fighter[i].getDirection());
 				}
 			}
+		}
 
+		for (int i = 0; i < 2; i++)
+		{
 			if (this->fighter[1 - i].getState() == FighterState::Shield)
 			{
 				this->fighter[1 - i].setState(FighterState::None);
@@ -53,8 +53,14 @@ namespace game
 					motion::jump(this->fighter[i], this->fighterX[i], this->fighterY[i]);
 				}
 
+				// 吹っ飛び中
+				if (this->fighter[i].getState() == FighterState::Blast)
+				{
+					this->fighter[i].decBlastCount();
+					motion::blast(this->fighter[i], this->fighterX[i], this->fighterY[i], this->fighter[i].getBlastDirection(), 30, 10);
+				}
 				// モーション中
-				if (this->fighter[i].getState() == FighterState::InMotion)
+				else if (this->fighter[i].getState() == FighterState::InMotion)
 				{
 					switch (this->fighter[i].getMotionNum())
 					{
