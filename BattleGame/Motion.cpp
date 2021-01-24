@@ -7,8 +7,8 @@ namespace game
 		// å„çdíº, É_ÉÅÅ[ÉW
 		const int motionTable[4][2] = {
 			{0, 0},
-			{10, 10},// rotateSord
-			{10, 10},// throwSord
+			{10, 30},// rotateSord
+			{10, 30},// throwSord
 			{10, 30},// grab
 		};
 
