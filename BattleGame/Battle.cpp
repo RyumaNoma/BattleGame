@@ -7,10 +7,10 @@ namespace game
 		for (int i = 0; i < 2; i++)
 		{
 			this->fighter[i] = getData().fighter[i];
-			this->fighterY[i] = 300;
+			this->fighterY[i] = 600;
 		}
-		this->fighterX[0] = 300;
-		this->fighterX[1] = 1000;
+		this->fighterX[0] = Scene::Center().x - 700;
+		this->fighterX[1] = Scene::Center().x + 700;
 
 		this->fighter[1].setDirection(Direction::Left);
 	}
@@ -157,14 +157,14 @@ namespace game
 	{
 		// 体力ゲージ
 		// 1P
-		Rect(0, 0, 400, 50).draw(Palette::Gray);
-		Rect(0, 0, this->fighter[0].getHP() * 4, 50).draw(Palette::Skyblue);
+		Rect(0, 0, 800, 100).draw(Palette::Gray);
+		Rect(0, 0, this->fighter[0].getHP() * 8, 100).draw(Palette::Skyblue);
 		// 2P
-		Rect(966, 0, 400, 50).draw(Palette::Gray);
-		Rect(1366 - this->fighter[1].getHP() * 4, 0, this->fighter[1].getHP() * 4, 50).draw(Palette::Skyblue);
+		Rect(1180, 0, 800, 100).draw(Palette::Gray);
+		Rect(1980 - this->fighter[1].getHP() * 8, 0, this->fighter[1].getHP() * 8, 100).draw(Palette::Skyblue);
 
 		// 地面
-		Line(0, 700, 1367, 700).draw(Palette::Brown);
+		Line(0, 1000, 1980, 1000).draw(Palette::Brown);
 		// Fighter
 		for (int i = 0; i < 2; i++)
 		{
@@ -204,9 +204,9 @@ namespace game
 		for (int i = 0; i < 2; i++)
 		{
 			if (this->fighterX[i] < 50) this->fighterX[i] = 50;
-			if (this->fighterX[i] > 1300) this->fighterX[i] = 1300;
+			if (this->fighterX[i] > 1930) this->fighterX[i] = 1930;
 			if (this->fighterY[i] < 0) this->fighterY[i] = 0;
-			if (this->fighterY[i] > 300) this->fighterY[i] = 300;
+			if (this->fighterY[i] > 600) this->fighterY[i] = 600;
 		}
 	}
 
@@ -217,9 +217,9 @@ namespace game
 		{
 			//空中にいる
 			// ジャンプはしていない
-			if (this->fighterY[i] < 300 && this->fighter[i].getInAirTime() == 0)
+			if (this->fighterY[i] < 600 && this->fighter[i].getInAirTime() == 0)
 			{
-				this->fighterY[i] = std::min(300, this->fighterY[i] + 3);
+				this->fighterY[i] = std::min(600, this->fighterY[i] + 3);
 			}
 		}
 	}
