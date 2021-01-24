@@ -13,6 +13,8 @@ namespace game
 		this->fighterX[1] = Scene::Center().x + 700;
 
 		this->fighter[1].setDirection(Direction::Left);
+
+		this->punchAudio = Audio(U"./data/punch.mp3");
 	}
 
 	void Battle::update()
@@ -56,6 +58,10 @@ namespace game
 				// ‚Á”ò‚Ñ’†
 				if (this->fighter[i].getState() == FighterState::Blast)
 				{
+					if (this->fighter[i].getBlastCount() == 15)
+					{
+						this->punchAudio.play();
+					}
 					this->fighter[i].decBlastCount();
 					motion::blast(this->fighter[i], this->fighterX[i], this->fighterY[i], this->fighter[i].getBlastDirection(), 30, 20);
 				}

@@ -18,6 +18,7 @@ namespace game
 		Fighter fighter[2];
 		int fighterX[2];
 		int fighterY[2];
+		Audio punchAudio;
 	public:
 		Battle(const InitData& init);
 		void update() override;
