@@ -94,7 +94,8 @@ namespace game
 						motion::grab(this->fighter[i], this->fighterX[i], this->fighterY[i]);
 						break;
 					case 5:
-						motion::slashWave(this->fighter[i], this->fighterX[i], this->fighterY[i], this->fighter[i].getDirection(), this->firearm);
+						this->firearm.push_back(Firearm());
+						motion::slashWave(this->fighter[i], this->fighterX[i], this->fighterY[i], this->fighter[i].getDirection(), this->firearm[this->firearm.size() - 1]);
 						break;
 					default:
 						break;
@@ -150,7 +151,7 @@ namespace game
 						this->fighter[i].setMotionNum(3);
 					}
 					// Rƒ{ƒ^ƒ“
-					if (gamepad.axes[2] < -0.5)
+					if (gamepad.axes[2] < -0.1)
 					{
 						this->fighter[i].setMotionNum(5);
 					}
@@ -255,7 +256,7 @@ namespace game
 			int x = this->firearm[i].pos.x;
 			int y = this->firearm[i].pos.y;
 			if (x < 0 || 1980 < x ||
-				y < 0 || 1000 < x)
+				y < 0 || 1000 < y)
 			{
 				this->firearm.erase(this->firearm.begin() + i);
 			}
