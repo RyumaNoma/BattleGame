@@ -5,8 +5,7 @@ using App = SceneManager<int, game::SceneData>;
 
 void Main()
 {
-	constexpr Size sceneSize = DisplayResolution::HD_1366x768;
-	// constexpr Size sceneSize = DisplayResolution::HD_1280x720;
+	constexpr Size sceneSize = DisplayResolution::FHD_1920x1080;
 	Scene::Resize(sceneSize);
 	Window::Resize(sceneSize, WindowResizeOption::KeepSceneSize);
 	// 全画面化
