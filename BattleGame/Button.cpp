@@ -30,15 +30,15 @@ namespace game
 
 	void drawBackButton()
 	{
-		FontAsset(U"Normal")(U"Back").drawAt(50, 25, Palette::Black);
+		FontAsset(U"Normal")(U"Back").drawAt(100, 50, Palette::Black);
 		// ècê¸
-		Line(100, 0, 100, 50).draw(Palette::Black);
+		Line(200, 0, 200, 100).draw(Palette::Black);
 		// â°ê¸
-		Line(0, 50, 100, 50).draw(Palette::Black);
+		Line(0, 100, 200, 100).draw(Palette::Black);
 	}
 
 	bool isPressedBackButton()
 	{
-		return isPressed(0, 0, 100, 50);
+		return isPressed(0, 0, 200, 100);
 	}
 }
