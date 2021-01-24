@@ -43,7 +43,7 @@ namespace game
 
 	bool Cursor::isPressedBackButton() const
 	{
-		return Cursor::isPressed(0, 0, 100, 50);
+		return Cursor::isPressed(0, 0, 200, 100);
 	}
 
 	bool Cursor::update()
