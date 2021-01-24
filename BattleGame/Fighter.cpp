@@ -285,7 +285,7 @@ namespace game
 
 	void Fighter::setBlastDirection(Direction direction)
 	{
-		this->blastDirection = direction
+		this->blastDirection = direction;
 	}
 
 	int Fighter::getHP() const
