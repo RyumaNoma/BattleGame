@@ -7,6 +7,7 @@ namespace game
 		None,
 		InMotion,
 		Rigidity,
-		Shield
+		Shield,
+		Blast
 	};
 }
