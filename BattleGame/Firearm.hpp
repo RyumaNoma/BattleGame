@@ -13,7 +13,9 @@ namespace game
 		Point pos;
 		Direction direction;
 		int flame;
+		int id;
 
 		Firearm();
+		void draw() const;
 	};
 }
