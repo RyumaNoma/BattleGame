@@ -10,6 +10,9 @@ namespace game
 		this->height = 1;
 		this->base = Point();
 		this->center = Point();
+		this->sordRotate = 0;
+		this->sordCenterX = 0;
+		this->sordCenterY = 0;
 		this->isAttack = false;
 		this->isVisible = true;
 	}
