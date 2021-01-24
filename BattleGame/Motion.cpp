@@ -14,9 +14,9 @@ namespace game
 
 		void jump(Fighter& fighter, int& fighterX, int& fighterY)
 		{
-			int lastPos = -sin(fighter.getInAirTime() / 50.0 * Math::Pi) * 200;
+			int lastPos = -sin(fighter.getInAirTime() / 50.0 * Math::Pi) * 400;
 			fighter.incInAirTime();
-			int nowPos = -sin(fighter.getInAirTime() / 50.0 * Math::Pi) * 200;
+			int nowPos = -sin(fighter.getInAirTime() / 50.0 * Math::Pi) * 400;
 			
 			fighterY += nowPos - lastPos;
 
