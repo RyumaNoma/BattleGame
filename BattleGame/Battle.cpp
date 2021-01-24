@@ -32,7 +32,7 @@ namespace game
 					this->fighter[1 - i].hitDamage(motion::motionTable[this->fighter[i].getMotionNum()][1]);
 					// ‚Ó‚Á‚Æ‚Ñ
 					this->fighter[1 - i].setState(FighterState::Blast);
-					this->fighter[1 - i].setBlastCount(10);
+					this->fighter[1 - i].setBlastCount(15);
 					this->fighter[1 - i].setBlastDirection(this->fighter[i].getDirection());
 				}
 			}
@@ -57,7 +57,7 @@ namespace game
 				if (this->fighter[i].getState() == FighterState::Blast)
 				{
 					this->fighter[i].decBlastCount();
-					motion::blast(this->fighter[i], this->fighterX[i], this->fighterY[i], this->fighter[i].getBlastDirection(), 30, 10);
+					motion::blast(this->fighter[i], this->fighterX[i], this->fighterY[i], this->fighter[i].getBlastDirection(), 30, 20);
 				}
 				// ƒ‚[ƒVƒ‡ƒ“’†
 				else if (this->fighter[i].getState() == FighterState::InMotion)
