@@ -118,10 +118,10 @@ namespace game
 			}
 		}
 
-		void blast(Fighter& fighter, int& fighterX, int& fighterY, Direction direction, int dist)
+		void blast(Fighter& fighter, int& fighterX, int& fighterY, Direction direction, int distX, int distY)
 		{
-			fighterX += (direction == Direction::Left) ? -dist : dist;
-			fighterY -= 100;
+			fighterX += (direction == Direction::Left) ? -distX : distX;
+			fighterY -= distY;
 		}
 	}
 }
