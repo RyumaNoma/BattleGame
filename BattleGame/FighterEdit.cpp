@@ -34,20 +34,20 @@ namespace game
 		}
 
 		// Saveボタン
-		if (SimpleGUI::Button(U"Save", Vec2(800, 600), 200))
+		if (SimpleGUI::Button(U"Save", Vec2(1500, 1000), 200))
 		{
 			FighterEdit::saveFighterData();
 			changeScene(1);
 		}
 
 		// Cancelボタン
-		if (SimpleGUI::Button(U"Cancel", Vec2(1000, 600), 200))
+		if (SimpleGUI::Button(U"Cancel", Vec2(1700, 1000), 200))
 		{
 			changeScene(1);
 		}
 
 		// 色決定ボタン
-		if (SimpleGUI::Button(U"Enter", Vec2(700, 320)))
+		if (SimpleGUI::Button(U"Enter", Vec2(1400, 640)))
 		{
 			this->selectColor.r = Parse<uint32>(this->red.text);
 			debug("red", Parse<uint32>(this->red.text));
@@ -60,49 +60,49 @@ namespace game
 		}
 
 		// 名前決定ボタン
-		if (SimpleGUI::Button(U"Enter", Vec2(800, 130)))
+		if (SimpleGUI::Button(U"Enter", Vec2(1350, 260)))
 		{
 			this->fighterName = this->name.text.narrow();
 		}
 
 		// 部位選択
-		if (SimpleGUI::Button(U"Head", Point(500, 200)))
+		if (SimpleGUI::Button(U"Head", Point(1000, 400)))
 		{
 			this->selectPart = 0;
 			debug("Part", this->selectPart);
 			this->selectColor = this->fighter.getPart(0).color;
 		}
-		else if (SimpleGUI::Button(U"Body", Point(500, 250)))
+		else if (SimpleGUI::Button(U"Body", Point(1000, 500)))
 		{
 			this->selectPart = 1;
 			debug("Part", this->selectPart);
 			this->selectColor = this->fighter.getPart(1).color;
 		}
-		else if (SimpleGUI::Button(U"Left Arm", Point(500, 300)))
+		else if (SimpleGUI::Button(U"Left Arm", Point(1000, 600)))
 		{
 			this->selectPart = 2;
 			debug("Part", this->selectPart);
 			this->selectColor = this->fighter.getPart(2).color;
 		}
-		else if (SimpleGUI::Button(U"Right Arm", Point(500, 350)))
+		else if (SimpleGUI::Button(U"Right Arm", Point(1000, 700)))
 		{
 			this->selectPart = 3;
 			debug("Part", this->selectPart);
 			this->selectColor = this->fighter.getPart(3).color;
 		}
-		else if (SimpleGUI::Button(U"Left Leg", Point(500, 400)))
+		else if (SimpleGUI::Button(U"Left Leg", Point(1000, 800)))
 		{
 			this->selectPart = 4;
 			debug("Part", this->selectPart);
 			this->selectColor = this->fighter.getPart(4).color;
 		}
-		else if (SimpleGUI::Button(U"Right Leg", Point(500, 450)))
+		else if (SimpleGUI::Button(U"Right Leg", Point(1000, 900)))
 		{
 			this->selectPart = 5;
 			debug("Part", this->selectPart);
 			this->selectColor = this->fighter.getPart(5).color;
 		}
-		else if (SimpleGUI::Button(U"Sord", Point(500, 500)))
+		else if (SimpleGUI::Button(U"Sord", Point(1000, 1000)))
 		{
 			this->selectPart = 6;
 			debug("Part", this->selectPart);
@@ -110,10 +110,10 @@ namespace game
 		}
 
 		// テキストボックス
-		SimpleGUI::TextBox(this->name, Vec2(550, 130));
-		SimpleGUI::TextBox(this->red, Vec2(800, 200));
-		SimpleGUI::TextBox(this->green, Vec2(800, 240));
-		SimpleGUI::TextBox(this->blue, Vec2(800, 280));
+		SimpleGUI::TextBox(this->name, Vec2(1100, 260));
+		SimpleGUI::TextBox(this->red, Vec2(1600, 400));
+		SimpleGUI::TextBox(this->green, Vec2(1600, 480));
+		SimpleGUI::TextBox(this->blue, Vec2(1600, 560));
 
 		if (!this->name.active)
 		{
@@ -135,12 +135,12 @@ namespace game
 		// Backボタン
 		drawBackButton();
 		// プレビュー
-		this->fighter.draw(300, 200);
+		this->fighter.draw(600, 400);
 		// テキストボックスの名前
-		FontAsset(U"Normal")(U"Name").drawAt(500, 150, Palette::Black);
-		FontAsset(U"Normal")(U"Red").drawAt(750, 220, Palette::Black);
-		FontAsset(U"Normal")(U"Green").drawAt(750, 260, Palette::Black);
-		FontAsset(U"Normal")(U"Blue").drawAt(750, 300, Palette::Black);
+		FontAsset(U"Normal")(U"Name").drawAt(1050, 280, Palette::Black);
+		FontAsset(U"Normal")(U"Red").drawAt(1400, 420, Palette::Black);
+		FontAsset(U"Normal")(U"Green").drawAt(1400, 500, Palette::Black);
+		FontAsset(U"Normal")(U"Blue").drawAt(1400, 580, Palette::Black);
 	}
 	
 	void FighterEdit::saveFighterData()
