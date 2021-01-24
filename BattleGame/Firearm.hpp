@@ -3,6 +3,7 @@
 #include <Siv3D.hpp>
 #include "BodyPart.hpp"
 #include "Direction.hpp"
+#include "Debug.hpp"
 
 namespace game
 {
