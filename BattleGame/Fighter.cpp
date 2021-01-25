@@ -52,6 +52,11 @@ namespace game
 		this->rigidityCount = 0;
 		// HP
 		this->hp = 100;
+		// ‹ZID
+		for (int i = 0; i < 5; i++)
+		{
+			this->skill[i] = 0;
+		}
 	}
 
 	BodyPart Fighter::getPart(int partID) const

@@ -29,6 +29,7 @@ namespace game
 		int hp;
 		// ‚»‚ÌUŒ‚‚Å‘Šè‚Éƒ_ƒ[ƒW‚ğ—^‚¦‚½‚çtrue‚É‚È‚é
 		bool giveDamage;
+		int skill[5];
 
 		int sordHand() const;
 	public:
