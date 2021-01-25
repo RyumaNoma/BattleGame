@@ -142,7 +142,7 @@ namespace game
 			firearm.direction = direction;
 
 			// ID‚Ìİ’è
-			firearm.id = 5;
+			firearm.id = 4;
 
 			if (fighter.getFlame() == 1)
 			{
