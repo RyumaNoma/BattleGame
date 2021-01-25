@@ -35,6 +35,14 @@ namespace game
 			str +=  oss.str();
 		}
 
+		// ‹Z
+		for (int i = 0; i < 5; i++)
+		{
+			std::ostringstream oss;
+			oss << this->skill[i] << ',';
+			str += oss.str();
+		}
+
 		debug(str);
 		return str;
 	}
@@ -44,8 +52,10 @@ namespace game
 		// ƒtƒ‰ƒO
 		bool nameFlag = false;
 		bool colorFlag = false;
+		bool skillFlag = false;
 
 		int ci = 0;
+		int si = 0;
 		int rgb = 0;
 		std::string now;
 
@@ -78,6 +88,11 @@ namespace game
 						break;
 					}
 					if (ci == 7) colorFlag = true;
+				}
+				else if (!skillFlag)
+				{
+					this->skill[si++] = atoi(toC(now));
+					if (si == 5) skillFlag = true;
 				}
 
 				now = "";
