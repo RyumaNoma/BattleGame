@@ -313,6 +313,11 @@ namespace game
 		this->giveDamage = giveDamage;
 	}
 
+	int Fighter::getSkill(int buttonID) const
+	{
+		return this->skill[buttonID];
+	}
+
 	void Fighter::draw(int startX, int startY) const
 	{
 		for (int i = 0; i < Fighter::BodyPartsCount; i++)

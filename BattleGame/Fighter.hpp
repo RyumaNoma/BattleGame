@@ -83,6 +83,8 @@ namespace game
 		bool getGiveDamage() const;
 		void setGiveDamage(bool giveDamage);
 
+		int getSkill(int buttonID) const;
+
 		void draw(int startX, int startY) const;
 
 		friend void toData(const Fighter& fighter, FighterData& fd);
