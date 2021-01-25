@@ -39,6 +39,21 @@ namespace game
 					this->fighter[1 - i].setBlastDirection(this->fighter[i].getDirection());
 				}
 			}
+
+			// 飛び道具が当たった
+			// シールドをしていない
+			int firearmID = -1;
+			if (Battle::isHitToFirearm(i, 1 - i, firearmID) &&
+				this->fighter[1 - i].getState() != FighterState::Shield)
+			{
+				this->fighter[1 - i].hitDamage(motion::motionTable[firearmID][1]);
+				debug("firearmID", firearmID);
+				debug("state", int(this->fighter[1 - i].getState()));
+				// ふっとび
+				this->fighter[1 - i].setState(FighterState::Blast);
+				this->fighter[1 - i].setBlastCount(15);
+				this->fighter[1 - i].setBlastDirection(this->fighter[i].getDirection());
+			}
 		}
 
 		//飛び道具
@@ -46,7 +61,7 @@ namespace game
 		{
 			switch (this->firearm[i].id)
 			{
-			case 5:
+			case 4:
 				motion::slashWave(this->firearm[i]);
 				break;
 			default:
@@ -56,9 +71,10 @@ namespace game
 
 		for (int i = 0; i < 2; i++)
 		{
-			if (this->fighter[1 - i].getState() == FighterState::Shield)
+			// シールド解除
+			if (this->fighter[i].getState() == FighterState::Shield)
 			{
-				this->fighter[1 - i].setState(FighterState::None);
+				this->fighter[i].setState(FighterState::None);
 			}
 
 			if (const auto gamepad = Gamepad(i))
@@ -95,6 +111,8 @@ namespace game
 						break;
 					case 5:
 						this->firearm.push_back(Firearm());
+						// fighterIDの設定
+						this->firearm[this->firearm.size() - 1].fighterID = i;
 						motion::slashWave(this->fighter[i], this->fighterX[i], this->fighterY[i], this->fighter[i].getDirection(), this->firearm[this->firearm.size() - 1]);
 						break;
 					default:
@@ -211,7 +229,7 @@ namespace game
 		}
 	}
 
-	bool Battle::isHit(int from, int to)
+	bool Battle::isHit(int from, int to) const
 	{
 		// from
 		for (int i = 0; i < 7; i++)
@@ -230,6 +248,41 @@ namespace game
 				// 当たったなら
 				if (Rect(p2.base.x + this->fighterX[to], p2.base.y + this->fighterY[to], p2.width, p2.height).rotatedAt(p2.center + Point(this->fighterX[to], this->fighterY[to]), p2.rotate).rotatedAt(Point(static_cast<int>(p2.sordCenterX), static_cast<int>(p2.sordCenterY)) + Point(this->fighterX[to], this->fighterY[to]), p2.sordRotate).intersects(rect))
 				{
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
+
+	bool Battle::isHitToFirearm(int from, int to, int& firearmID)
+	{
+		// from
+		for (int i = 0; i < this->firearm.size(); i++)
+		{
+			if (this->firearm[i].fighterID != from) continue;
+
+			const BodyPart p = this->firearm[i].body;
+			const auto& firearm = Rect(p.base + this->firearm[i].pos, p.width, p.height)
+				.rotatedAt(p.center + this->firearm[i].pos, p.rotate)
+				.rotatedAt(Point(static_cast<int>(p.sordCenterX), static_cast<int>(p.sordCenterY)) + this->firearm[i].pos, p.sordRotate);
+			// to
+			for (int j = 0; j < 7; j++)
+			{
+				const BodyPart& p2 = this->fighter[to].getPart(j);
+				if (!p2.isVisible) continue;
+				if (p2.isAttack) continue;
+
+				// 当たったなら
+				if (Rect(p2.base.x + this->fighterX[to], p2.base.y + this->fighterY[to], p2.width, p2.height)
+					.rotatedAt(p2.center + Point(this->fighterX[to], this->fighterY[to]), p2.rotate)
+					.rotatedAt(Point(static_cast<int>(p2.sordCenterX), static_cast<int>(p2.sordCenterY)) + Point(this->fighterX[to], this->fighterY[to]), p2.sordRotate)
+					.intersects(firearm))
+				{
+					// 攻撃判定を無くす
+					this->firearm[i].body.isAttack = false;
+					firearmID = this->firearm[i].id;
 					return true;
 				}
 			}

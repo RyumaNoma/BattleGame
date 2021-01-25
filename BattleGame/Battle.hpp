@@ -27,7 +27,8 @@ namespace game
 		void update() override;
 		void draw() const override;
 
-		bool isHit(int from, int to);
+		bool isHit(int from, int to) const;
+		bool isHitToFirearm(int from, int to, int& firearmID);
 
 		void inField();
 		void firearmInField();
