@@ -98,6 +98,7 @@ namespace game
 
 		void shield(Fighter& fighter, int& fighterX, int& fighterY)
 		{
+			fighter.setState(FighterState::Shield);
 			Circle(fighterX, fighterY + 200, 220).draw(Color(100, 168, 50, 100));
 		}
 

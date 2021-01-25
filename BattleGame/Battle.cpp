@@ -147,31 +147,42 @@ namespace game
 							this->fighter[i].setInAirTime(1);
 						}
 					}
+
+					int skillID = -1;
 					// Aボタン
 					if (gamepad.buttons[0].pressed())
 					{
-						this->fighter[i].setMotionNum(1);
+						skillID = this->fighter[i].getSkill(0);
+						this->fighter[i].setMotionNum(skillID);
 					}
 					// Bボタン
 					if (gamepad.buttons[1].pressed())
 					{
-						this->fighter[i].setMotionNum(2);
+						skillID = this->fighter[i].getSkill(1);
+						this->fighter[i].setMotionNum(skillID);
 					}
 					// Xボタン
 					if (gamepad.buttons[2].pressed())
 					{
-						motion::shield(this->fighter[i], this->fighterX[i], this->fighterY[i]);
-						this->fighter[i].setState(FighterState::Shield);
+						skillID = this->fighter[i].getSkill(2);
+						this->fighter[i].setMotionNum(skillID);
 					}
 					// Yボタン
 					if (gamepad.buttons[3].pressed())
 					{
-						this->fighter[i].setMotionNum(3);
+						skillID = this->fighter[i].getSkill(3);
+						this->fighter[i].setMotionNum(skillID);
 					}
-					// Rボタン
-					if (gamepad.axes[2] < -0.1)
+					// ZRボタン
+					if (gamepad.buttons[5].pressed())
 					{
-						this->fighter[i].setMotionNum(5);
+						skillID = this->fighter[i].getSkill(4);
+						this->fighter[i].setMotionNum(skillID);
+					}
+
+					if (skillID == 4)
+					{
+						motion::shield(this->fighter[i], this->fighterX[i], this->fighterY[i]);
 					}
 				}
 
