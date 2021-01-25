@@ -14,7 +14,7 @@ namespace game
 
 		for (int i = 0; i < 5; i++)
 		{
-			this->skill[i] = 0;
+			this->skill[i] = i + 1;
 		}
 
 		this->name = "No Name";
