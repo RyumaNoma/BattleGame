@@ -9,6 +9,7 @@ namespace game
 		this->direction = Direction::Left;
 		this->flame = 0;
 		this->id = 0;
+		this->fighterID = 0;
 	}
 
 	void Firearm::draw() const

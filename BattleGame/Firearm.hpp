@@ -15,6 +15,7 @@ namespace game
 		Direction direction;
 		int flame;
 		int id;
+		int fighterID;
 
 		Firearm();
 		void draw() const;
