@@ -12,6 +12,11 @@ namespace game
 		this->color[5] = Palette::Purple;
 		this->color[6] = Palette::Gray;
 
+		for (int i = 0; i < 5; i++)
+		{
+			this->skill[i] = 0;
+		}
+
 		this->name = "No Name";
 	}
 

@@ -17,6 +17,7 @@ namespace game
 	public:
 		Color color[7];
 		std::string name;
+		int skill[5];
 
 		FighterData();
 		std::string toS() const;
