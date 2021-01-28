@@ -35,6 +35,7 @@ namespace game
 		void gravity();
 		// UŒ‚”»’è‚ª‚È‚­‚È‚Á‚½”ò‚Ñ“¹‹ï‚ğÁ‚·
 		void eraseFirearm();
+		void resetMotion(Fighter& fighter, int fighterNum);
 	};
 }
 

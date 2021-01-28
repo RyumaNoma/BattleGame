@@ -31,6 +31,9 @@ namespace game
 				if (this->fighter[i].getMotionNum() == 3 ||
 					this->fighter[1 - i].getState() != FighterState::Shield)
 				{
+					// モーションを解除
+					Battle::resetMotion(this->fighter[1 - i], 1 - i);
+
 					this->fighter[i].setGiveDamage(true);
 					this->fighter[1 - i].hitDamage(motion::motionTable[this->fighter[i].getMotionNum()][1]);
 					// ふっとび
@@ -46,6 +49,9 @@ namespace game
 			if (Battle::isHitToFirearm(i, 1 - i, firearmID) &&
 				this->fighter[1 - i].getState() != FighterState::Shield)
 			{
+				// モーションを解除
+				Battle::resetMotion(this->fighter[1 - i], 1 - i);
+
 				this->fighter[1 - i].hitDamage(motion::motionTable[firearmID][1]);
 				debug("firearmID", firearmID);
 				debug("state", int(this->fighter[1 - i].getState()));
@@ -350,5 +356,19 @@ namespace game
 				this->firearm.erase(this->firearm.begin() + i);
 			}
 		}
+	}
+
+	void Battle::resetMotion(Fighter& fighter, int fighterNum)
+	{
+		fighter.setDirection(Direction::Left);
+		getData().fighter[fighterNum].setDirection(Direction::Left);
+
+		for (int i = 0; i < 7; i++)
+		{
+			fighter.setPart(i, getData().fighter[fighterNum].getPart(i));
+		}
+
+		fighter.resetFlame();
+		fighter.resetMotionNum();
 	}
 }
